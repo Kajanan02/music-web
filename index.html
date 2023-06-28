@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Bootstrap 5.0.2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+            integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
+
+
 </head>
 <body>
 
@@ -97,6 +108,35 @@
     </div>
 
     <div class="hipSound-playlists">
+        <!-- Button trigger modal -->
+<!--        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--            Launch demo modal-->
+<!--        </button>-->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img src="assets/audio.jpeg">
+                            <audio src="Bekhayali.mp3" controls></audio>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <h2>HipSound Playlists</h2>
 
         <div class="list">
@@ -109,7 +149,7 @@
                 <p>Rema & Selena Gomez are on top of the...</p>
             </div>
 
-            <div class="item">
+            <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
                 <div class="play">
                     <span class="fa fa-play"></span>
@@ -250,7 +290,7 @@
             </div>
         </div>
     </div>
-
+<!--    <button id="myBtn">Open Modal</button>-->
     <div class="hipSound-playlists">
         <h2>Mood</h2>
         <div class="list">
@@ -329,6 +369,8 @@
 
         <hr>
     </div>
+
+
 
     <div class="preview">
         <div class="text">

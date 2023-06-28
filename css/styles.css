@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+
 }
 body {
     background-color: #121212;
@@ -22,6 +23,7 @@ body {
 .sidebar .navigation ul {
     list-style: none;
     margin-top: 20px;
+    padding-left: 0;
 }
 .sidebar .navigation ul li {
     padding: 10px 0px;
@@ -57,6 +59,7 @@ body {
 }
 .sidebar .policies ul {
     list-style: none;
+    padding-left: 0a;
 }
 .sidebar .policies ul li {
     padding-bottom: 5px;
@@ -98,6 +101,7 @@ body {
 .topbar .navbar {
     display: flex;
     align-items: center;
+    padding: 0;
 }
 .topbar .navbar ul {
     list-style: none;
@@ -150,6 +154,7 @@ body {
     color: #ffffff;
     font-size: 22px;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 .hipSound-playlists .list {
     display: flex;
@@ -164,6 +169,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: all ease 0.4s;
+    box-sizing: initial;
 }
 .hipSound-playlists .list .item:hover {
     background-color: #252525;
@@ -181,7 +187,7 @@ body {
     right: 10px;
     top: -60px;
     padding: 18px;
-    background-color: #1db954;
+    background-color: #75F991;
     border-radius: 100%;
     opacity: 0;
     transition: all ease 0.4s;
@@ -191,6 +197,7 @@ body {
     transform: translateY(-20px);
 }
 .hipSound-playlists .list .item h4 {
+    font-weight: 600;
     color: #ffffff;
     font-size: 14px;
     margin-bottom: 10px;
@@ -241,3 +248,13 @@ body {
     border-radius: 40px;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
