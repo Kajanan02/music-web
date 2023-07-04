@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Melomaniac</title>
     <!-- Bootstrap 5.0.2 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -13,7 +13,7 @@
             integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="stylesheet" href="css/audio-player.css">
 
 </head>
 <body>
@@ -29,33 +29,29 @@
         <ul>
             <li>
                 <a href="#">
-                    <span class="fa fa-home"></span>
+                    <span class="fa fa-fw fa-home"></span>
                     <span>Home</span>
                 </a>
             </li>
 
             <li>
                 <a href="#">
-                    <span class="fa fa-search"></span>
-                    <span>Search</span>
+                    <span class="fa fa-fw fa-users"></span>
+                    <span>Artists</span>
                 </a>
             </li>
 
             <li>
                 <a href="#">
-                    <span class="fa fas fa-book"></span>
-                    <span>Your Library</span>
+                    <span class="fa fa-fw fa-play"></span>
+                    <span>Albums</span>
                 </a>
             </li>
-        </ul>
-    </div>
-
-    <div class="navigation">
-        <ul>
+    
             <li>
                 <a href="#">
-                    <span class="fa fas fa-plus-square"></span>
-                    <span>Create Playlist</span>
+                    <span class="fa fa-fw fa-headphones"></span>
+                    <span>Songs</span>
                 </a>
             </li>
 
@@ -63,6 +59,27 @@
                 <a href="#">
                     <span class="fa fas fa-heart"></span>
                     <span>Liked Songs</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="fa fa-fw fa-music"></span>
+                    <span>Playlists</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="fa fa-fw fa-credit-card"></span>
+                    <span>Subscriptions</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="fa fa-fw fa-cogs"></span>
+                    <span>Settings</span>
                 </a>
             </li>
         </ul>
@@ -370,9 +387,8 @@
         <hr>
     </div>
 
-
-
-    <div class="preview">
+    <!-- CAN WE JUST MAKE THIS APPEAR ON TOP AS MUSIC PLAYER GOES HERE -->
+    <!--div class="preview">
         <div class="text">
             <h6>Preview of HipSound</h6>
             <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
@@ -380,12 +396,72 @@
         <div class="button">
             <button type="button">Sign up free</button>
         </div>
+    </div-->
+
+    <div class="container-fluid player">
+        <div class="row">
+            <div class="col-12 seek-slider-container">
+                <div class="slider-container">
+                    <div class="current-time">00:00</div>
+                    <input type="range" min="1" max="100" value="0" class="seek-slider" onchange="seekTo()" style="width: 100%;">
+                    <div class="total-duration">00:00</div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col track-info-container-main">
+                    <div class="track-art"></div>
+                    <div class="track-info-container-sub">
+                        <div class="track-name">Track Name</div>
+                        <div class="track-artist">Track Artist</div>
+                    </div>
+                </div>
+
+                <div class="col playpause-container">
+                    <div class="prev-track" onclick="prevTrack()">
+                        <i class="fa fa-step-backward fa-3x"></i>
+                    </div>
+                    <div class="play-pause-track" onclick="playPauseTrack()">
+                        <i class="fa fa-play-circle fa-5x"></i>
+                    </div>
+                    <div class="next-track" onclick="nextTrack()">
+                        <i class="fa fa-step-forward fa-3x"></i>
+                    </div>
+                </div>
+
+                <div class="col right-main-container">
+                    <div>
+                        <div class="slider-container">
+                            <i class="fa fa-volume-down"></i>
+                            <input type="range" min="1" max="100" value="99" class="volume-slider" onchange="setVolume()" style="margin: 10px;">
+                            <i class="fa fa-volume-up"></i>
+                        </div>
+                    </div>
+                    <div class="lyrics-visualizer-container">
+                        <div style="margin-right: 20px;">
+                            Lyrics: <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div>
+                            Visualizer: <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 15px;"></div>
+        </div>
     </div>
-</div>
 
 <script
         src="https://kit.fontawesome.com/23cecef777.js"
         crossorigin="anonymous"
 ></script>
+<script src="scripts/audio-player.js"></script>
 </body>
 </html>
