@@ -1,0 +1,178 @@
+.player{
+    display: flexbox;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    color: #fff;
+    bottom: 0px;
+    left: 189px;
+    right: 0;
+    position: fixed;
+    width: 90%;
+}
+
+.track-art{
+    margin-left: 10px;
+    height: 93px;
+    width: 93px;
+    background-image: URL("https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250");
+    background-size: cover;
+    background-position: center;
+    border-radius: 15%;
+}
+
+.track-name, .track-artist{
+    font-size: 1rem;
+    color: #fff;
+}
+
+.track-info-container-main{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.track-info-container-sub{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-left: 15px;
+}
+
+.playpause-track, .prev-track, .next-track{
+    padding: 25px;
+    opacity: 0.8;
+    transition: opacity .2s;
+} 
+
+.playpause-container{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center
+}
+
+.playpause-track:hover, .prev-track:hover, .next-track:hover{
+    opacity: 1.0;
+} 
+
+.slider-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seek-slider-container{
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center"
+}
+
+.seek-slider, .volume-slider{
+    appearance: none;
+    height: 5px;
+    background: #fff;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.seek-slider::-webkit-slider-thumb, .volume_slider::-webkit-slider-thumb{
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.seek-slider:hover, .volume_slider:hover{
+    opacity: 1.0;
+}
+
+.seek-slider{
+    width: 100%;
+    margin: 15px;
+}
+
+.current-time, .total_duration{
+    padding: 10px;
+}
+
+i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward{
+    cursor: pointer;
+}
+
+.right-main-container{
+    display:flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.lyrics-visualizer-container{
+    display:flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #808589;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #808589;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 30px;
+}
+
+.slider.round:before {
+    border-radius: 40%;
+}
