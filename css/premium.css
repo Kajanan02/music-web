@@ -1,0 +1,17 @@
+.nav-links{
+    color: #b3b3b3 !important;
+    font-weight: bold;
+    font-size: 16px;
+}
+.nav-links:hover{
+    color: #5ff550 !important;
+}
+.header{
+    background: rgb(255, 205, 210);
+}
+.header-img{
+    border-radius: 40px;
+}
+.get-start-btn:hover{
+    color: #5ff550 !important;
+}
