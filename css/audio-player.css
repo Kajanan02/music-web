@@ -9,6 +9,7 @@
     right: 0;
     position: fixed;
     width: 90%;
+    background-color: #000;
 }
 
 .track-art{
@@ -175,4 +176,16 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 40%;
+}
+
+.lyrics-panel{
+    background-color: #ccc;
+    /*position: absolute;*/
+    /*display: block;*/
+    z-index: 9;
+    /*height: 80%;
+    width: 80%;
+    top: 0;
+    left: 0;
+    color: #fff;*/
 }

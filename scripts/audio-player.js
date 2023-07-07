@@ -18,45 +18,54 @@ let updateTimer;
 
 let curr_track = document.createElement('audio');
 
-/*let track_list = [
-    {
-        name: "Gave It All Away",
-        artist: "Boyzone",
-        image: "../images/Gave_It_All_Away.jpg",
-        path: "../songs/Gave It All Away.mp3"
-    },
-    {
-        name: "Castle On the Hill",
-        artist: "Ed Sheeran",
-        image: "../images/Divide.jpg",
-        path: "../songs/Castle on the Hill.mp3"
-    },
-    {
-        name: "2002",
-        artist: "Anne Marie",
-        image: "../images/2002.jpg",
-        path: "../songs/2002.mp3"
-    },
-];*/
-
 let track_list = [
     {
-      name: "Night Owl",
-      artist: "Broke For Free",
-      image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-      path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
+        name: "Aaruyirae",
+        artist: "A.R. Rahman",
+        image: "assets/album-art/Guru.jpg",
+        path: "assets/audio/Aaruyirae.mp3"
     },
     {
-      name: "Enthusiast",
-      artist: "Tours",
-      image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-      path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3"
+        name: "Bekhayali",
+        artist: "Kabir Singh",
+        image: "assets/album-art/audio.jpeg",
+        path: "assets/audio/Bekhayali.mp3"
     },
     {
-      name: "Shipping Lanes",
-      artist: "Chad Crouch",
-      image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-      path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
+        name: "Castle on the Hill",
+        artist: "Ed Sheeran",
+        image: "assets/album-art/Divide.png",
+        path: "assets/audio/Castle On The Hill.mp3"
+    },
+    {
+        name: "Dura",
+        artist: "Daddy Yankee",
+        image: "assets/album-art/Daddy-K-The-Mix-12.jpg",
+        path: "assets/audio/Dura.mp3"
+    },
+    {
+        name: "Goodlife",
+        artist: "Kehlani ft. G-Eazy",
+        image: "assets/album-art/The_Fate_of_the_Furious_The_Album.jpg",
+        path: "assets/audio/Goodlife (ft. G-Eazy).mp3"
+    },
+    {
+        name: "Hall of Fame",
+        artist: "The Script",
+        image: "assets/album-art/3.jpg",
+        path: "assets/audio/Hall Of Fame.mp3"
+    },
+    {
+        name: "Perfect",
+        artist: "Ed Sheeran",
+        image: "assets/album-art/Divide.png",
+        path: "assets/audio/Perfect.mp3"
+    },
+    {
+        name: "Unconditionally",
+        artist: "Katy Perry",
+        image: "assets/album-art/Prism.jpg",
+        path: "assets/audio/Unconditionally.mp3"
     },
   ];
 
@@ -153,3 +162,15 @@ function seekUpdate(){
         total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
 }
+
+function viewLyrics(){
+    let isEnabled = document.getElementById("lyrics").checked;
+    if(isEnabled){
+        console.log(isEnabled);
+    }
+    else{
+        console.log(isEnabled);
+    }
+}
+
+viewLyrics();

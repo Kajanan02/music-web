@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Melomaniac</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <!-- Bootstrap 5.0.2 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -21,7 +22,7 @@
 <div class="sidebar">
     <div class="logo">
         <a href="#">
-            <img src="assets/logo.png" alt="Logo"/>
+            <img src="assets/melomaniac.png" alt="Logo"/>
         </a>
     </div>
 
@@ -124,6 +125,10 @@
         </div>
     </div>
 
+    <div class="main-container lyrics-panel" id="lyrics-panel">
+        
+    </div>
+
     <div class="hipSound-playlists">
         <!-- Button trigger modal -->
 <!--        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
@@ -140,8 +145,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img src="assets/audio.jpeg">
-                            <audio src="Bekhayali.mp3" controls></audio>
+                            <img src="assets/album-art/audio.jpeg">
+                            <audio src="assets/audio/Bekhayali.mp3" controls></audio>
                         </div>
 
                     </div>
@@ -441,13 +446,13 @@
                     <div class="lyrics-visualizer-container">
                         <div style="margin-right: 20px;">
                             Lyrics: <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="lyrics">
                                 <span class="slider round"></span>
                             </label>
                         </div>
                         <div>
                             Visualizer: <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="visualizer">
                                 <span class="slider round"></span>
                             </label>
                         </div>
