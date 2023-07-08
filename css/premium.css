@@ -14,4 +14,49 @@
 }
 .get-start-btn:hover{
     color: #5ff550 !important;
+}.header-artist{
+     height: calc(100vh - 76px);
+ }
+ .bg-black{
+     background-color: #000;
+ }
+ .header-artist-h1{
+     font-size: 3.5rem !important;
+     margin-bottom: 40px;
+ }
+ .bg-rose{
+     background-color: rgb(255, 205, 210) !important;
+ }
+ .btn-register-artist:hover{
+     color: #5ff550;
+     background-color: #000;
+ }
+ .footer p, footer h5, footer li{
+     color: #fff !important;
+ }
+ .artist-login-container{
+     height: calc(100vh - 87px);
+     overflow: hidden;
+ }
+.bg-play{
+    position: absolute;
+    width: 50%;
+}
+.btn-go{
+    color: black !important;
+    background-color: #75F991 !important;
+    border-color: #75F991 !important;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+
+}
+.btn-go:hover{
+    color: #fff !important;
+    background-color: transparent !important;
+    border-color: #75F991 !important;
+}
+
+.place-holder::placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+
 }
