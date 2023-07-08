@@ -1,0 +1,32 @@
+.img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.artist-name{
+    text-align: center;
+    padding-top: 15px;
+    width: 200px;
+}
+
+.letter-section{
+    text-align: left;
+}
+
+.letter{
+    font-weight: bold;
+}
+
+.letter, .artist-name{
+    color: #fff;
+    padding-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;  
+}
+
+.link{
+    width: 200px;
+    font-style: none;
+    text-decoration: none;
+    text-align: center;
+}

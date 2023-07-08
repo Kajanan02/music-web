@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <gn>Melomaniac</gn>
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+
     <!-- Bootstrap 5.0.2 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -17,22 +19,21 @@
     <link rel="stylesheet" href="css/audio-player.css">
 </head>
 <body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="#">
+                <img src="assets/logos/melomaniac.png" alt="Logo"/>
+            </a>
+        </div>
 
-<div class="sidebar">
-    <div class="logo">
-        <a href="#">
-            <img src="assets/melomaniac.png" alt="Logo"/>
-        </a>
-    </div>
-
-    <div class="navigation">
-        <ul>
-            <li>
-                <a href="#">
-                    <span class="fa fa-fw fa-home"></span>
-                    <span>Home</span>
-                </a>
-            </li>
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <span class="fa fa-fw fa-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
 
             <li>
                 <a href="artist.html">
@@ -55,74 +56,74 @@
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <span class="fa fas fa-heart"></span>
-                    <span>Liked Songs</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="fa fa-fw fa-music"></span>
-                    <span>Playlists</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="fa fa-fw fa-credit-card"></span>
-                    <span>Subscriptions</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="fa fa-fw fa-cogs"></span>
-                    <span>Settings</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="policies">
-        <ul>
-            <li>
-                <a href="#">Cookies</a>
-            </li>
-            <li>
-                <a href="#">Privacy</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="main-container">
-    <div class="topbar">
-        <div class="prev-next-buttons">
-            <button type="button" class="fa fas fa-chevron-left"></button>
-            <button type="button" class="fa fas fa-chevron-right"></button>
-        </div>
-
-        <div class="navbar">
-            <ul>
                 <li>
-                    <a href="premium.html">Premium</a>
+                    <a href="#">
+                        <span class="fa fas fa-heart"></span>
+                        <span>Liked Songs</span>
+                    </a>
                 </li>
+
                 <li>
-                    <a href="#">Support</a>
+                    <a href="#">
+                        <span class="fa fa-fw fa-music"></span>
+                        <span>Playlists</span>
+                    </a>
                 </li>
+
                 <li>
-                    <a href="#">Download</a>
+                    <a href="#">
+                        <span class="fa fa-fw fa-credit-card"></span>
+                        <span>Subscriptions</span>
+                    </a>
                 </li>
-                <li class="divider">|</li>
+
                 <li>
-                    <a href="signup.html">Sign Up</a>
+                    <a href="#">
+                        <span class="fa fa-fw fa-cogs"></span>
+                        <span>Settings</span>
+                    </a>
                 </li>
             </ul>
-            <a type="button" class="nav-btn" href="login.html">Log In</a>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li>
+                    <a href="#">Cookies</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+            </ul>
         </div>
     </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+
+            <div class="navbar">
+                <ul>
+                    <li>
+                        <a href="premium.html">Premium</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                    <li>
+                        <a href="#">Download</a>
+                    </li>
+                    <li class="divider">|</li>
+                    <li>
+                        <a href="signup.html">Sign Up</a>
+                    </li>
+                </ul>
+                <a type="button" class="nav-btn" href="login.html">Log In</a>
+            </div>
+        </div>
 
     <div class="hipSound-playlists">
         <!-- Button trigger modal -->
@@ -130,172 +131,172 @@
         <!--            Launch demo modal-->
         <!--        </button>-->
 
-        <!-- Modal -->
-        <!--div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img src="assets/album-art/audio.jpeg">
-                            <audio src="assets/audio/Bekhayali.mp3" controls></audio>
+            <!-- Modal -->
+            <!--div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+                                <img src="assets/album-art/audio.jpeg">
+                                <audio src="assets/audio/Bekhayali.mp3" controls></audio>
+                            </div>
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div-->
+
+
+            <h2>HipSound Playlists</h2>
+
+            <div class="list">
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
                     </div>
+                    <h4>Today's Top Hits</h4>
+                    <p>Rema & Selena Gomez are on top of the...</p>
                 </div>
-            </div>
-        </div-->
 
-
-        <h2>HipSound Playlists</h2>
-
-        <div class="list">
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>RapCaviar</h4>
+                    <p>New Music from Lil Baby, Juice WRLD an...</p>
                 </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-            </div>
 
-            <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>All out 2010s</h4>
+                    <p>The biggest spmgs pf tje 2010s. Cover:...</p>
                 </div>
-                <h4>RapCaviar</h4>
-                <p>New Music from Lil Baby, Juice WRLD an...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Rock Classics</h4>
+                    <p>Rock Legends & epic songs that continue t...</p>
                 </div>
-                <h4>All out 2010s</h4>
-                <p>The biggest spmgs pf tje 2010s. Cover:...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Chill Hits</h4>
+                    <p>Kick back to the best new and recent chill...</p>
                 </div>
-                <h4>Rock Classics</h4>
-                <p>Rock Legends & epic songs that continue t...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Viva Latino</h4>
+                    <p>Today's top Latin hits elevando nuestra...</p>
                 </div>
-                <h4>Chill Hits</h4>
-                <p>Kick back to the best new and recent chill...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Mega Hit Mix</h4>
+                    <p>A mega mix of 75 favorites from the last...</p>
                 </div>
-                <h4>Viva Latino</h4>
-                <p>Today's top Latin hits elevando nuestra...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>All out 80s</h4>
+                    <p>The biggest songs of the 1090s.</p>
                 </div>
-                <h4>Mega Hit Mix</h4>
-                <p>A mega mix of 75 favorites from the last...</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>All out 80s</h4>
-                <p>The biggest songs of the 1090s.</p>
             </div>
         </div>
-    </div>
 
-    <div class="hipSound-playlists">
-        <h2>Focus</h2>
-        <div class="list">
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+        <div class="hipSound-playlists">
+            <h2>Focus</h2>
+            <div class="list">
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Peaceful Piano</h4>
+                    <p>Relax and indulge with beautiful piano pieces</p>
                 </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Deep Focus</h4>
+                    <p>Keep calm and focus with ambient and pos...</p>
                 </div>
-                <h4>Deep Focus</h4>
-                <p>Keep calm and focus with ambient and pos...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Instrumental Study</h4>
+                    <p>Focus with soft study music in the...</p>
                 </div>
-                <h4>Instrumental Study</h4>
-                <p>Focus with soft study music in the...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>chill lofi study beats</h4>
+                    <p>The perfect study beats, twenty four...</p>
                 </div>
-                <h4>chill lofi study beats</h4>
-                <p>The perfect study beats, twenty four...</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Coding Mode</h4>
+                    <p>Dedicated to all the programmers out there.</p>
                 </div>
-                <h4>Coding Mode</h4>
-                <p>Dedicated to all the programmers out there.</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Focus Flow</h4>
+                    <p>Uptempo instrumental hip hop beats.</p>
                 </div>
-                <h4>Focus Flow</h4>
-                <p>Uptempo instrumental hip hop beats.</p>
-            </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Calm Before The Storm</h4>
+                    <p>Calm before the storm music.</p>
                 </div>
-                <h4>Calm Before The Storm</h4>
-                <p>Calm before the storm music.</p>
-            </div>
 
             <div class="item">
                 <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
@@ -320,88 +321,88 @@
                 <p>Get happy with today's dose of feel-good...</p>
             </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Feelin' Good</h4>
+                    <p>Feel good with this positively timeless...</p>
                 </div>
-                <h4>Feelin' Good</h4>
-                <p>Feel good with this positively timeless...</p>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Dark & Stormy</h4>
+                    <p>Beautifully dark, dramatic tracks.</p>
+                </div>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Feel Good Piano</h4>
+                    <p>Happy vibes for an upbeat morning.</p>
+                </div>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Feelin' Myself</h4>
+                    <p>The hip-hop playlist that's a whole mood...</p>
+                </div>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Chill Tracks</h4>
+                    <p>Softer kinda dance</p>
+                </div>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>Feel-Good Indie Rock</h4>
+                    <p>The best indie rock vibes - classic and...</p>
+                </div>
+
+                <div class="item">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>idk.</h4>
+                    <p>idk.</p>
+                </div>
             </div>
 
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>Dark & Stormy</h4>
-                <p>Beautifully dark, dramatic tracks.</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>Feel Good Piano</h4>
-                <p>Happy vibes for an upbeat morning.</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>Feelin' Myself</h4>
-                <p>The hip-hop playlist that's a whole mood...</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>Chill Tracks</h4>
-                <p>Softer kinda dance</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>Feel-Good Indie Rock</h4>
-                <p>The best indie rock vibes - classic and...</p>
-            </div>
-
-            <div class="item">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db"/>
-                <div class="play">
-                    <span class="fa fa-play"></span>
-                </div>
-                <h4>idk.</h4>
-                <p>idk.</p>
-            </div>
+            <hr>
         </div>
 
-        <hr>
-    </div>
+        <!-- CAN WE JUST MAKE THIS APPEAR ON TOP AS MUSIC PLAYER GOES HERE -->
+        <!--div class="preview">
+            <div class="text">
+                <h6>Preview of HipSound</h6>
+                <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
+            </div>
+            <div class="button">
+                <button type="button">Sign up free</button>
+            </div>
+        </div-->
 
-    <!-- CAN WE JUST MAKE THIS APPEAR ON TOP AS MUSIC PLAYER GOES HERE -->
-    <!--div class="preview">
-        <div class="text">
-            <h6>Preview of HipSound</h6>
-            <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
+        <div id="lyrics-panel-background"></div>
+        <div id="lyrics-panel">
+            <p id="lyric"></p>
         </div>
-        <div class="button">
-            <button type="button">Sign up free</button>
-        </div>
-    </div-->
-
-    <div id="lyrics-panel-background"></div>
-    <div id="lyrics-panel">
-        <p id="lyric"></p>
-    </div>
 
     <div class="container-fluid player">
         <div class="row">
@@ -424,17 +425,17 @@
                     </div>
                 </div>
 
-                <div class="col playpause-container">
-                    <div class="prev-track" onclick="prevTrack()">
-                        <i class="fa fa-step-backward fa-3x"></i>
+                    <div class="col playpause-container">
+                        <div class="prev-track" onclick="prevTrack()">
+                            <i class="fa fa-step-backward fa-3x"></i>
+                        </div>
+                        <div class="play-pause-track" onclick="playPauseTrack()">
+                            <i class="fa fa-play-circle fa-5x"></i>
+                        </div>
+                        <div class="next-track" onclick="nextTrack()">
+                            <i class="fa fa-step-forward fa-3x"></i>
+                        </div>
                     </div>
-                    <div class="play-pause-track" onclick="playPauseTrack()">
-                        <i class="fa fa-play-circle fa-5x"></i>
-                    </div>
-                    <div class="next-track" onclick="nextTrack()">
-                        <i class="fa fa-step-forward fa-3x"></i>
-                    </div>
-                </div>
 
                 <div class="col right-main-container">
                     <div>
