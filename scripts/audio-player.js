@@ -1,4 +1,3 @@
-//let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
 let track_artist = document.querySelector(".track-artist");
@@ -20,52 +19,68 @@ let curr_track = document.createElement('audio');
 
 let track_list = [
     {
-        name: "Aaruyirae",
-        artist: "A.R. Rahman",
-        image: "assets/album-art/Guru.jpg",
-        path: "assets/audio/Aaruyirae.mp3"
-    },
-    {
-        name: "Bekhayali",
-        artist: "Kabir Singh",
-        image: "assets/album-art/audio.jpeg",
-        path: "assets/audio/Bekhayali.mp3"
-    },
-    {
         name: "Castle on the Hill",
         artist: "Ed Sheeran",
         image: "assets/album-art/Divide.png",
-        path: "assets/audio/Castle On The Hill.mp3"
+        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
+        path: "assets/audio/Castle On The Hill.mp3",
+        lyrics: "assets/lrc/Castle-On-The-Hill.lrc"
     },
     {
         name: "Dura",
         artist: "Daddy Yankee",
         image: "assets/album-art/Daddy-K-The-Mix-12.jpg",
-        path: "assets/audio/Dura.mp3"
+        artistArt: "assets/artist-art/Daddy-Yankee.jpg",
+        path: "assets/audio/Dura.mp3",
+        lyrics: "assets/lrc/Dura.lrc"
     },
     {
         name: "Goodlife",
         artist: "Kehlani ft. G-Eazy",
         image: "assets/album-art/The_Fate_of_the_Furious_The_Album.jpg",
-        path: "assets/audio/Goodlife (ft. G-Eazy).mp3"
+        artistArt: "",
+        path: "assets/audio/Goodlife (ft. G-Eazy).mp3",
+        lyrics: ""
     },
     {
         name: "Hall of Fame",
         artist: "The Script",
         image: "assets/album-art/3.jpg",
-        path: "assets/audio/Hall Of Fame.mp3"
+        artistArt: "",
+        path: "assets/audio/Hall Of Fame.mp3",
+        lyrics: ""
     },
     {
         name: "Perfect",
         artist: "Ed Sheeran",
         image: "assets/album-art/Divide.png",
-        path: "assets/audio/Perfect.mp3"
+        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
+        path: "assets/audio/Perfect.mp3",
+        lyrics: ""
     },
     {
         name: "Unconditionally",
         artist: "Katy Perry",
         image: "assets/album-art/Prism.jpg",
-        path: "assets/audio/Unconditionally.mp3"
+        artistArt: "",
+        path: "assets/audio/Unconditionally.mp3",
+        lyrics: ""
+    },
+    {
+        name: "Aaruyirae",
+        artist: "A.R. Rahman",
+        image: "assets/album-art/Guru.jpg",
+        artistArt: "assets/artist-art/A.R.Rahman.jpeg",
+        path: "assets/audio/Aaruyirae.mp3",
+        lyrics: ""
+    },
+    {
+        name: "Bekhayali",
+        artist: "Kabir Singh",
+        image: "assets/album-art/audio.jpeg",
+        artistArt: "",
+        path: "assets/audio/Bekhayali.mp3",
+        lyrics: ""
     },
   ];
 
@@ -75,20 +90,21 @@ function loadTrack(track_index){
 
     curr_track.src = track_list[track_index].path;
     curr_track.load();
+    
+    showLyrics();
 
     track_art.style.backgroundImage = "url(" + track_list[track_index].image + ")";
     track_name.textContent = track_list[track_index].name;
     track_artist.textContent = track_list[track_index].artist;
-    //now_playing.textContent = "PLAYING " + (track_index + 1) + " OF " + track_list.length;
-
-    updateTimer = setInterval(seekUpdate, 1000); //// Set an interval of 1000 milliseconds for updating the seek slider
+    
+    updateTimer = setInterval(seekUpdate, 500); //// Set an interval of 1000 milliseconds for updating the seek slider
     curr_track.addEventListener("ended", nextTrack);
 }
 
 function resetValues(){
     curr_time.textContent = "00:00";
     total_duration.textContent = "00:00";
-    //seek_slider.value = 0;
+    seek_slider.value = 0;
 }
 
 loadTrack(track_index);
@@ -120,6 +136,8 @@ function nextTrack(){
 
     loadTrack(track_index);
     playTrack();
+    viewLyricsPanel();
+    showLyrics();
 }
 
 function prevTrack(){
@@ -130,6 +148,8 @@ function prevTrack(){
 
     loadTrack(track_index);
     playTrack();
+    viewLyricsPanel();
+    showLyrics();
 }
 
 function seekTo(){
@@ -163,14 +183,89 @@ function seekUpdate(){
     }
 }
 
-function viewLyrics(){
-    let isEnabled = document.getElementById("lyrics").checked;
+function viewLyricsPanel(){
+    let isEnabled = document.getElementById("lyrics-switch").checked;
     if(isEnabled){
-        console.log(isEnabled);
+        document.getElementById("lyric").innerHTML = "";
+        document.getElementById("lyrics-panel-background").style.display = "block";
+        document.getElementById("lyrics-panel").style.backgroundImage = "url(" + track_list[track_index].artistArt + ")";
+        document.getElementById("lyrics-panel").style.display = "block";
     }
     else{
-        console.log(isEnabled);
+        document.getElementById("lyrics-panel-background").style.display = "none";
+        document.getElementById("lyrics-panel").style.display = "none";
     }
 }
 
-viewLyrics();
+async function showLyrics() {
+    "use strict";
+    
+    let lrcFile = track_list[track_index].lyrics;
+    let audioFile = track_list[track_index].path;
+    
+    const dom = {
+        lyric: document.getElementById("lyric"),
+        player: curr_track
+    };
+
+    const result = await fetch(lrcFile);
+    const lrc = await result.text();
+    
+    let lyrics = parseLyrics(lrc);
+
+    dom.player.src = audioFile;
+
+    dom.player.ontimeupdate = () => {
+        const time = dom.player.currentTime;
+        const index = syncLyrics(lyrics, time);
+
+        if (index == null) return;
+
+        dom.lyric.innerHTML = lyrics[index].text;
+    };
+};
+
+function parseLyrics(lrc) {
+    let regEx = /(\d{2}:\d{2}.\d{2}).([a-zA-Z ',]+)/i;
+
+    const lines = lrc.split("\n");
+
+    const output = [];
+
+    lines.forEach(line => {
+        let match = line.match(regEx);
+        
+        if (match == null) return;
+        
+        output.push({
+            time: parseTime(match[1]),
+            text: match[2].trim()
+        });
+    });
+
+    // TIMESTAMP FORMAT - mm:ss:xx (minutes: seconds: xx-100ths of a second)
+    function parseTime(time) {
+        const minsec = time.split(":");
+        const min = parseInt(minsec[0]) * 60; // convert minutes to seconds
+        const sec = parseFloat(minsec[1]);
+
+        return min + sec; // return total time in seconds
+    }
+
+    return output;
+}
+
+function syncLyrics(lyrics, time) {
+    const scores = [];
+
+    lyrics.forEach(lyric => {
+        const score = time - lyric.time; // get the gap or distance
+        if (score >= 0) scores.push(score);
+    });
+
+    if (scores.length == 0) return null;
+
+    const closest = Math.min(...scores); // get the smallest value from scores
+
+    return scores.indexOf(closest); // return the index of closest lyric
+}

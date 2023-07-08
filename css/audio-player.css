@@ -10,13 +10,14 @@
     position: fixed;
     width: 90%;
     background-color: #000;
+    z-index: 3;
 }
 
 .track-art{
     margin-left: 10px;
     height: 93px;
     width: 93px;
-    background-image: URL("https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250");
+    background-image: URL("");
     background-size: cover;
     background-position: center;
     border-radius: 15%;
@@ -58,7 +59,7 @@
 } 
 
 .slider-container{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,14 +179,39 @@ input:checked + .slider:before {
     border-radius: 40%;
 }
 
-.lyrics-panel{
-    background-color: #ccc;
-    /*position: absolute;*/
-    /*display: block;*/
-    z-index: 9;
-    /*height: 80%;
-    width: 80%;
+#lyrics-panel-background{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 78%;
     top: 0;
-    left: 0;
-    color: #fff;*/
+    left: 189px;
+    right: 0;
+    bottom: 100px;
+    background-color: rgb(74, 71, 71);
+    z-index: 1;
+}
+
+#lyrics-panel{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 78%;
+    top: 0;
+    left: 189px;
+    right: 0;
+    bottom: 100px;
+    background-image: url("");
+    opacity: 0.4;
+    object-fit: cover;
+    z-index: 2;
+    text-align: center;
+}
+
+#lyric{
+    width: 85%;
+    text-align: center;
+    color: #fff;
+    font-size: 5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
