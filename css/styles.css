@@ -79,6 +79,8 @@ body {
 .main-container {
     margin-left: 245px;
     margin-bottom: 100px;
+    position: absolute;
+    background-color: #121212;
 }
 
 .topbar {
@@ -109,7 +111,7 @@ body {
 .topbar .navbar ul li {
     display: inline-block;
     margin: 0px 8px;
-    width: 70px;
+    width: 85px;
 }
 .topbar .navbar ul li a {
     color: #b3b3b3;
@@ -248,13 +250,3 @@ body {
     border-radius: 40px;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
