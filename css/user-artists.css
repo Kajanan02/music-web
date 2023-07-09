@@ -42,20 +42,27 @@ body{
 }
 
 .cover{
-    width: 83%;
+    width: 100%;
     height: 45%;
-    left: 215px;
+    left: 10px;
     right: 10px;
-    position: fixed;
+    position: absolute;
 }
 
 .cover-image{
+    position: relative;
     width: 1200px;
     object-fit: cover;
     object-position: 50% 20%;
     max-width: 100%;
     max-height: 100%;
     opacity: 0.5;
+}
+
+.content{
+    margin-top: -150px;
+    margin-left: 50px;
+    z-index: 1;
 }
 
 .profile-picture{
@@ -66,11 +73,8 @@ body{
     border-color: #fff;
     border-width: 5px;
     box-shadow: rgba(179, 176, 176, 0.5) inset;
-    z-index: 1;
     position: relative;
-    left: 40px;
-    top: -100px;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .profile-picture:hover{
@@ -82,9 +86,25 @@ body{
     padding-left: 45px;
     color: #fff;
     position: relative;
-    left: 180px;
-    top: -220px;
-    z-index: 1;
     font-weight: bold;
-    font-size: 4rem;
+}
+
+.subtitle{
+    color: rgba(255, 255, 255, 0.5);
+    padding-left: 45px;
+    position: relative;
+}
+
+.bio{
+    position: relative;
+    z-index: 0;
+    color: #fff;
+    text-align: justify;
+    position: sticky;
+    margin-top: 55%;
+    padding-top: 60px;
+    min-width: none;
+    max-width: 100%;
+    margin-right: 5%;
+    left: 10px;
 }
