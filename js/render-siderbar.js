@@ -31,7 +31,7 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="user-songs.html">
                         <span class="fa fa-fw fa-headphones"></span>
                         <span>Songs</span>
                     </a>
