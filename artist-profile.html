@@ -18,87 +18,11 @@
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/user-artists.css">
+    <link rel="stylesheet" href="css/audio-player.css">
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <a href="#">
-                <img src="assets/logos/melomaniac.png" alt="Logo" />
-            </a>
-        </div>
-
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="index.html">
-                        <span class="fa fa-fw fa-home"></span>
-                        <span>Home</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="user-artists.html">
-                        <span class="fa fa-fw fa-users"></span>
-                        <span>Artists</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-play"></span>
-                        <span>Albums</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-headphones"></span>
-                        <span>Songs</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fas fa-heart"></span>
-                        <span>Liked Songs</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-music"></span>
-                        <span>Playlists</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-credit-card"></span>
-                        <span>Subscriptions</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-cogs"></span>
-                        <span>Settings</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="policies">
-            <ul>
-                <li>
-                    <a href="#">Cookies</a>
-                </li>
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <!-- Sidebar Rendered from the Template Goes Here -->
 
     <div class="main-container">
         <div class="topbar">
@@ -167,14 +91,13 @@
                     </p>
                 </div>
             </div>
-            <div class="row hipSound-playlists">
+            <div class="row melomaniac-playlists">
                 <h2>Top Songs</h2>
                 <div class="list">
                     <div class="item">
                         <img src="assets/album-art/Guru.jpg" />
-                        <div class="play" onclick="artistPlayPause()">
+                        <div class="play" onclick="setTrackIndex(6)">
                             <span class="fa fa-play"></span>
-                            <audio id="artist-song" src="assets/audio/Aaruyirae.mp3"></audio>
                         </div>
                         <h4>Aaruyiae</h4>
                         <p>From Guru Soundtrack</p>
@@ -255,6 +178,9 @@
     </script>
 
     <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+    <script src="js/render-siderbar.js"></script>
+    <script src="js/render-player.js"></script>
+    <script src="js/audio-player.js"></script>
 </body>
 
 </html>
