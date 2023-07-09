@@ -85,6 +85,17 @@ let track_list = [
     },
   ];
 
+function setTrackIndex(n){
+    if(track_index == n){
+        playPauseTrack();
+    }
+    else{
+        track_index = n;
+        loadTrack(n)
+    }
+    console.log(track_index);
+}
+
 function loadTrack(track_index){
     clearInterval(updateTimer);
     resetValues();
@@ -102,13 +113,13 @@ function loadTrack(track_index){
     curr_track.addEventListener("ended", nextTrack);
 }
 
+loadTrack(track_index);
+
 function resetValues(){
     curr_time.textContent = "00:00";
     total_duration.textContent = "00:00";
     seek_slider.value = 0;
 }
-
-loadTrack(track_index);
 
 function playPauseTrack(){
     if(!isPlaying) playTrack();
@@ -140,7 +151,6 @@ function nextTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
-    showLyrics();
 }
 
 function prevTrack(){
@@ -152,7 +162,6 @@ function prevTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
-    showLyrics();
 }
 
 function seekTo(){
