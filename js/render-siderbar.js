@@ -38,7 +38,7 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="user-playlists.html">
                         <span class="fa fa-fw fa-music"></span>
                         <span>Playlists</span>
                     </a>
