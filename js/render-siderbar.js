@@ -52,7 +52,7 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="user-settings.html">
                         <span class="fa fa-fw fa-cogs"></span>
                         <span>Settings</span>
                     </a>
