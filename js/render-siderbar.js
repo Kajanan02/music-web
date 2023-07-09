@@ -45,13 +45,6 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-credit-card"></span>
-                        <span>Subscriptions</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="user-settings.html">
                         <span class="fa fa-fw fa-cogs"></span>
                         <span>Settings</span>
