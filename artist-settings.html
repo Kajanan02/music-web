@@ -16,21 +16,37 @@
 
         <link rel="stylesheet" href="css/styles.css">
     </head>
+
     <body>
-        <div class="main-container container-md">
-            <h2 class="display-4 text-white">Settings</h2>
+        <nav class="navbar  px-5 bg-dark shadow">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1 px-5 text-white"> 
+                    <a href="index.html"> <img src="assets/logo-transparent.png" alt="Logo" width="200px" /></a>
+                </span>
+                <div>
+                    <a class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-info" href="artist-dashboard.html">Dashboard</a>
+                    <a class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-primary" href="artist-settings.html">Settings</a>
+                    <a class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-secondary" href="artist-login.html">Logout</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container-md">
+            <h2 class="display-4 text-white mt-4">Settings</h2>
 
             <form class="mx-5 my-5 px-5">
-                 <!-- CHANGE PROFILE PIC GOES HERE -->
-
+                <!-- CHANGE PROFILE PIC GOES HERE -->
+                
                 <div class="mb-3">
-                    <label for="first_name" class="form-label text-white">First Name</label>
-                    <input type="text" class="form-control bg-dark text-white place-holder" placeholder="STORED FNAME IN DB" id="first_name">
+                    <label for="artist_name" class="form-label text-white">First Name</label>
+                    <input type="text" class="form-control bg-dark text-white place-holder" placeholder="STORED Name IN DB" id="artist_name">
                 </div>
 
                 <div class="mb-3">
-                    <label for="last_name" class="form-label text-white">Last Name</label>
-                    <input type="text" class="form-control bg-dark text-white place-holder" placeholder="STORED LNAME IN DB" id="last_name">
+                    <label for="artist-bio" class="form-label text-white">Description</label>
+                    <textarea rows="10" cols="10" class="form-control bg-dark text-white place-holder" placeholder="STORED bio IN DB" id="artist-bio">
+
+                    </textarea>
                 </div>
 
                 <div class="mb-3">
@@ -46,6 +62,11 @@
                 <div class="mb-3">
                     <label for="user_country" class="form-label text-white">Country</label>
                     <input type="text" class="form-control bg-dark text-white place-holder" placeholder="STORED COUNTY IN DB" id="user_country">
+                </div>
+
+                <div class="mb-3">
+                    <label for="cover_picture" class="form-label text-white">Cover Image</label>
+                    <input type="file" class="form-control bg-dark text-white place-holder" placeholder="STORED COVER_IMG IN DB" id="cover_picture">
                 </div>
 
                 <div class="mb-3">
@@ -82,9 +103,6 @@
                 <input type="submit" class="btn btn-warning fw-medium px-5 py-2 mt-4 btn-go" value="Save Changes" name="save">
             </form>
         </div>
-        
-        <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
-        <script src="js/render-siderbar.js"></script>
-        <script src="js/render-topbar.js"></script>
+
     </body>
 </html>
