@@ -1,233 +1,260 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Artists</title>
-        <link rel="icon" type="image/png" href="assets/logos/favicon.png">
-        
-        <!-- Bootstrap 5.0.2 -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-                crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-                integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-                crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/user-artists.css">
-    </head>
-    <body>
-        <div class="sidebar">
-            <div class="logo">
-                <a href="#">
-                    <img src="assets/logos/melomaniac.png" alt="Logo"/>
-                </a>
+<head>
+    <meta charset="UTF-8">
+    <title>Artists</title>
+    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+
+    <!-- Bootstrap 5.0.2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-artists.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="#">
+                <img src="assets/logos/melomaniac.png" alt="Logo" />
+            </a>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <span class="fa fa-fw fa-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="user-artists.html">
+                        <span class="fa fa-fw fa-users"></span>
+                        <span>Artists</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-fw fa-play"></span>
+                        <span>Albums</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-fw fa-headphones"></span>
+                        <span>Songs</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fas fa-heart"></span>
+                        <span>Liked Songs</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-fw fa-music"></span>
+                        <span>Playlists</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-fw fa-credit-card"></span>
+                        <span>Subscriptions</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-fw fa-cogs"></span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li>
+                    <a href="#">Cookies</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
             </div>
-        
-            <div class="navigation">
+
+            <div class="navbar">
                 <ul>
                     <li>
-                        <a href="index.html">
-                            <span class="fa fa-fw fa-home"></span>
-                            <span>Home</span>
-                        </a>
+                        <a href="premium.html">Premium</a>
                     </li>
-        
                     <li>
-                        <a href="user-artists.html">
-                            <span class="fa fa-fw fa-users"></span>
-                            <span>Artists</span>
-                        </a>
+                        <a href="#">Support</a>
                     </li>
-        
                     <li>
-                        <a href="#">
-                            <span class="fa fa-fw fa-play"></span>
-                            <span>Albums</span>
-                        </a>
+                        <a href="artist.html">For Artists</a>
                     </li>
-            
                     <li>
-                        <a href="#">
-                            <span class="fa fa-fw fa-headphones"></span>
-                            <span>Songs</span>
-                        </a>
+                        <a href="#">Download</a>
                     </li>
-        
+                    <li class="divider">|</li>
                     <li>
-                        <a href="#">
-                            <span class="fa fas fa-heart"></span>
-                            <span>Liked Songs</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-fw fa-music"></span>
-                            <span>Playlists</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-fw fa-credit-card"></span>
-                            <span>Subscriptions</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-fw fa-cogs"></span>
-                            <span>Settings</span>
-                        </a>
+                        <a href="signup.html">Sign Up</a>
                     </li>
                 </ul>
-            </div>
-        
-            <div class="policies">
-                <ul>
-                    <li>
-                        <a href="#">Cookies</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacy</a>
-                    </li>
-                </ul>
+                <a type="button" class="nav-btn" href="login.html">Log In</a>
             </div>
         </div>
-        
-        <div class="main-container">
-            <div class="topbar">
-                <div class="prev-next-buttons">
-                    <button type="button" class="fa fas fa-chevron-left"></button>
-                    <button type="button" class="fa fas fa-chevron-right"></button>
-                </div>
-    
-                <div class="navbar">
-                    <ul>
-                        <li>
-                            <a href="premium.html">Premium</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
-                        </li>
-                        <li>
-                            <a href="artist.html">For Artists</a>
-                        </li>
-                        <li>
-                            <a href="#">Download</a>
-                        </li>
-                        <li class="divider">|</li>
-                        <li>
-                            <a href="signup.html">Sign Up</a>
-                        </li>
-                    </ul>
-                    <a type="button" class="nav-btn" href="login.html">Log In</a>
-                </div>
-            </div>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl">
-                        <div class="cover">
-                            <img src="assets/artist-art/A.R.Rahman.jpeg" class="cover-image img-fluid">
-                            <div class="content">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <!--input type="file" enctype="multi-part/formdata"-->
-                                        <img src="assets/artist-art/A.R.Rahman.jpeg" class="col-4 align-self-start img-thumbnail profile-picture">
-                                    </div>
-                                    <div class="col align-self-center">
-                                        <h4 class="display-2 title">A.R Rahman</h4>
-                                        <h5 class="subtitle"> New Delhi - India</h5>
-                                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl">
+                    <div class="cover">
+                        <img src="assets/artist-art/A.R.Rahman.jpeg" class="cover-image img-fluid">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-2">
+                                    <!--input type="file" enctype="multi-part/formdata"-->
+                                    <img src="assets/artist-art/A.R.Rahman.jpeg"
+                                        class="col-4 align-self-start img-thumbnail profile-picture">
+                                </div>
+                                <div class="col align-self-center">
+                                    <h4 class="display-2 title">A.R Rahman</h4>
+                                    <h5 class="subtitle"> New Delhi - India</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl bio">
-                        <p class="lead">
-                            A.R. Rahman is an iconic Indian composer, singer, and music producer, widely regarded 
-                            as one of the greatest music maestros in the Indian film industry. Born on January 6, 1967, 
-                            in Chennai, India, Rahman's birth name is A. S. Dileep Kumar. He is renowned for his diverse 
-                            musical talent and ability to fuse various genres and cultural influences into his compositions.
-                            <br>
-                            Rahman gained international recognition with his groundbreaking soundtrack for the film "Roja" 
-                            in 1992, which marked his entry into the Indian film industry. Since then, he has composed 
-                            music for numerous critically acclaimed and commercially successful movies, earning him 
-                            widespread acclaim and numerous prestigious awards, including two Academy Awards, two Grammy 
-                            Awards, and a BAFTA Award.
-                        </p>
+            </div>
+            <div class="row">
+                <div class="col-xl bio">
+                    <p class="lead">
+                        A.R. Rahman is an iconic Indian composer, singer, and music producer, widely regarded
+                        as one of the greatest music maestros in the Indian film industry. Born on January 6, 1967,
+                        in Chennai, India, Rahman's birth name is A. S. Dileep Kumar. He is renowned for his diverse
+                        musical talent and ability to fuse various genres and cultural influences into his compositions.
+                        <br>
+                        Rahman gained international recognition with his groundbreaking soundtrack for the film "Roja"
+                        in 1992, which marked his entry into the Indian film industry. Since then, he has composed
+                        music for numerous critically acclaimed and commercially successful movies, earning him
+                        widespread acclaim and numerous prestigious awards, including two Academy Awards, two Grammy
+                        Awards, and a BAFTA Award.
+                    </p>
+                </div>
+            </div>
+            <div class="row hipSound-playlists">
+                <h2>Top Songs</h2>
+                <div class="list">
+                    <div class="item">
+                        <img src="assets/album-art/Guru.jpg" />
+                        <div class="play" onclick="artistPlayPause()">
+                            <span class="fa fa-play"></span>
+                            <audio id="artist-song" src="assets/audio/Aaruyirae.mp3"></audio>
+                        </div>
+                        <h4>Aaruyiae</h4>
+                        <p>From Guru Soundtrack</p>
+                    </div>
+
+                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="assets/album-art/Sangamam.jpeg" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4>Varaha Nadhikarai</h4>
+                        <p>From Sangamam</p>
+                    </div>
+
+                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="assets/album-art/Jai-Ho.jpeg" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4>Jai-Ho</h4>
+                        <p>From Jai-Ho Soundtrack</p>
                     </div>
                 </div>
-                <div class="row hipSound-playlists">
-                    <h2>Top Songs</h2>
-                    <div class="list">
-                        <div class="item">
-                            <img src="assets/album-art/Guru.jpg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Aaruyiae</h4>
-                            <p>From Guru Soundtrack</p>
-                        </div>
 
-                        <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="assets/album-art/Sangamam.jpeg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Varaha Nadhikarai</h4>
-                            <p>From Sangamam</p>
+                <h2>Top Albums</h2>
+                <div class="list">
+                    <div class="item">
+                        <img src="assets/album-art/Guru.jpg" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
                         </div>
-
-                        <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="assets/album-art/Jai-Ho.jpeg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Jai-Ho</h4>
-                            <p>From Jai-Ho Soundtrack</p>
-                        </div>
+                        <h4>Guru</h4>
+                        <p>Soundtrack from original motion pricture Guru 2007</p>
                     </div>
 
-                    <h2>Top Albums</h2>
-                    <div class="list">
-                        <div class="item">
-                            <img src="assets/album-art/Guru.jpg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Guru</h4>
-                            <p>Soundtrack from original motion pricture Guru 2007</p>
+                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="assets/album-art/Sangamam.jpeg" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
                         </div>
+                        <h4>Sangamam</h4>
+                        <p>Soundtrack from original motion pricture Sangamam 1999</p>
+                    </div>
 
-                        <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="assets/album-art/Sangamam.jpeg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Sangamam</h4>
-                            <p>Soundtrack from original motion pricture Sangamam 1999</p>
+                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="assets/album-art/Jai-Ho.jpeg" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
                         </div>
-
-                        <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="assets/album-art/Jai-Ho.jpeg"/>
-                            <div class="play">
-                                <span class="fa fa-play"></span>
-                            </div>
-                            <h4>Jai-Ho</h4>
-                            <p>Soundtrack from original motion pricture Jai-Jo 2014</p>
-                        </div>
+                        <h4>Jai-Ho</h4>
+                        <p>Soundtrack from original motion pricture Jai-Jo 2014</p>
                     </div>
                 </div>
-                    
             </div>
         </div>
-        <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
-    </body>
+    </div>
+
+    <script>
+        let playStatus = false;
+        let artistPlay = document.getElementById("artist-song");
+        let playBtn = document.querySelector(".play");
+
+        function play(){
+            artistPlay.play();
+            playStatus = true;
+            playBtn.innerHTML = "<span class='fa fa-pause'></span>";
+        }
+        function pause(){
+            artistPlay.pause();
+            playStatus = false;
+            playBtn.innerHTML = "<span class='fa fa-play'></span>";
+        }
+
+        function artistPlayPause(){
+            if(!playStatus) play();
+            else pause();
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+</body>
+
 </html>

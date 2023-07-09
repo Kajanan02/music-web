@@ -5,6 +5,7 @@ let track_artist = document.querySelector(".track-artist");
 let playpause_btn = document.querySelector(".play-pause-track");
 let prev_btn = document.querySelector(".prev-track");
 let next_btn = document.querySelector(".next-track");
+let playlistPlayBtn = document.querySelector(".play");
 
 let seek_slider = document.querySelector(".seek-slider");
 let volume_slider = document.querySelector(".volume-slider");
@@ -119,6 +120,7 @@ function playTrack(){
     isPlaying = true;
 
     playpause_btn.innerHTML = "<i class='fa fa-pause-circle fa-5x'></i>";
+    playlistPlayBtn.innerHTML = "<span class='fa fa-pause'></span>"
 }
 
 function pauseTrack(){
@@ -126,6 +128,7 @@ function pauseTrack(){
     isPlaying = false;
 
     playpause_btn.innerHTML = "<i class='fa fa-play-circle fa-5x'></i>";
+    playlistPlayBtn.innerHTML = "<span class='fa fa-play'></span>"
 }
 
 function nextTrack(){
