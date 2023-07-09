@@ -28,6 +28,14 @@ let track_list = [
         lyrics: "assets/lrc/Castle-On-The-Hill.lrc"
     },
     {
+        name: "Perfect",
+        artist: "Ed Sheeran",
+        image: "assets/album-art/Divide.png",
+        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
+        path: "assets/audio/Perfect.mp3",
+        lyrics: "assets/lrc/Perfect.lrc"
+    },
+    {
         name: "Dura",
         artist: "Daddy Yankee",
         image: "assets/album-art/Daddy-K-The-Mix-12.jpg",
@@ -49,14 +57,6 @@ let track_list = [
         image: "assets/album-art/3.jpg",
         artistArt: "",
         path: "assets/audio/Hall Of Fame.mp3",
-        lyrics: ""
-    },
-    {
-        name: "Perfect",
-        artist: "Ed Sheeran",
-        image: "assets/album-art/Divide.png",
-        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
-        path: "assets/audio/Perfect.mp3",
         lyrics: ""
     },
     {
@@ -85,10 +85,21 @@ let track_list = [
     },
   ];
 
+function setTrackIndex(n){
+    if(track_index == n){
+        playPauseTrack();
+    }
+    else{
+        track_index = n;
+        loadTrack(n);
+    }
+    //console.log(track_index, curr_playlist);
+}
+
 function loadTrack(track_index){
     clearInterval(updateTimer);
     resetValues();
-
+   
     curr_track.src = track_list[track_index].path;
     curr_track.load();
     
@@ -97,18 +108,18 @@ function loadTrack(track_index){
     track_art.style.backgroundImage = "url(" + track_list[track_index].image + ")";
     track_name.textContent = track_list[track_index].name;
     track_artist.textContent = track_list[track_index].artist;
-    
+
     updateTimer = setInterval(seekUpdate, 500); //// Set an interval of 1000 milliseconds for updating the seek slider
     curr_track.addEventListener("ended", nextTrack);
 }
+
+loadTrack(track_index);
 
 function resetValues(){
     curr_time.textContent = "00:00";
     total_duration.textContent = "00:00";
     seek_slider.value = 0;
 }
-
-loadTrack(track_index);
 
 function playPauseTrack(){
     if(!isPlaying) playTrack();
@@ -140,7 +151,6 @@ function nextTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
-    showLyrics();
 }
 
 function prevTrack(){
@@ -152,7 +162,6 @@ function prevTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
-    showLyrics();
 }
 
 function seekTo(){

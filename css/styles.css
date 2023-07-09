@@ -149,21 +149,21 @@ body {
 .topbar .navbar button:focus,.nav-btn:hover,.nav-btn:active,.nav-btn:focus {
     background-color: #f2f2f2;
 }
-.hipSound-playlists {
+.melomaniac-playlists {
     padding: 20px 40px;
 }
-.hipSound-playlists h2 {
+.melomaniac-playlists h2 {
     color: #ffffff;
     font-size: 22px;
     margin-bottom: 20px;
     font-weight: 700;
 }
-.hipSound-playlists .list {
+.melomaniac-playlists .list {
     display: flex;
     gap: 20px;
     overflow: hidden;
 }
-.hipSound-playlists .list .item {
+.melomaniac-playlists .list .item {
     min-width: 140px;
     width: 160px;
     padding: 15px;
@@ -173,18 +173,18 @@ body {
     transition: all ease 0.4s;
     box-sizing: initial;
 }
-.hipSound-playlists .list .item:hover {
+.melomaniac-playlists .list .item:hover {
     background-color: #252525;
 }
-.hipSound-playlists .list .item img {
+.melomaniac-playlists .list .item img {
     width: 100%;
     border-radius: 6px;
     margin-bottom: 10px;
 }
-.hipSound-playlists .list .item .play {
+.melomaniac-playlists .list .item .play {
     position: relative;
 }
-.hipSound-playlists .list .item .play .fa {
+.melomaniac-playlists .list .item .play .fa {
     position: absolute;
     right: 10px;
     top: -60px;
@@ -194,11 +194,11 @@ body {
     opacity: 0;
     transition: all ease 0.4s;
 }
-.hipSound-playlists .list .item:hover .play .fa {
+.melomaniac-playlists .list .item:hover .play .fa {
     opacity: 1;
     transform: translateY(-20px);
 }
-.hipSound-playlists .list .item h4 {
+.melomaniac-playlists .list .item h4 {
     font-weight: 600;
     color: #ffffff;
     font-size: 14px;
@@ -207,13 +207,13 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.hipSound-playlists .list .item p {
+.melomaniac-playlists .list .item p {
     color: #989898;
     font-size: 12px;
     line-height: 20px;
     font-weight: 600;
 }
-.hipSound-playlists hr {
+.melomaniac-playlists hr {
     margin: 70px 0px 0px;
     border-color: #636363;
 }
