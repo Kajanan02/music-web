@@ -5,7 +5,7 @@ let track_artist = document.querySelector(".track-artist");
 let playpause_btn = document.querySelector(".play-pause-track");
 let prev_btn = document.querySelector(".prev-track");
 let next_btn = document.querySelector(".next-track");
-let playlistPlayBtn = document.querySelector(".play");
+let playlistPlayBtn = document.querySelector(".play"); //should select the last clicked element: NEEDS FIXING
 
 let seek_slider = document.querySelector(".seek-slider");
 let volume_slider = document.querySelector(".volume-slider");
@@ -93,7 +93,6 @@ function setTrackIndex(n){
         track_index = n;
         loadTrack(n);
     }
-    //console.log(track_index, curr_playlist);
 }
 
 function loadTrack(track_index){
