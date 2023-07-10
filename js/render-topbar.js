@@ -12,13 +12,7 @@ topbar.innerHTML = `
                     <a href="user-premium.html">Premium</a>
                 </li>
                 <li>
-                    <a href="#">Support</a>
-                </li>
-                <li>
                     <a href="artist-main.html">For Artists</a>
-                </li>
-                <li>
-                    <a href="#">Download</a>
                 </li>
                 <li class="divider">|</li>
                 <li>
