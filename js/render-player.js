@@ -1,6 +1,6 @@
 const audioPlayer = document.createElement("template");
 audioPlayer.innerHTML = `
-    <div id="lyrics-panel-background"></div>
+    <div id="background-panel"></div>
     <div id="lyrics-panel" class="self-align-center">
         <p id="lyric"></p>
     </div>
@@ -55,7 +55,7 @@ audioPlayer.innerHTML = `
                         </div>
                         <div>
                             Visualizer: <label class="switch">
-                                <input type="checkbox" id="visualizer">
+                                <input type="checkbox" id="visualizer-switch" onchange="viewVisualizer()">
                                 <span class="slider round"></span>
                             </label>
                         </div>

@@ -179,7 +179,7 @@ input:checked + .slider:before {
     border-radius: 40%;
 }
 
-#lyrics-panel-background{
+#background-panel{
     position: fixed;
     display: none;
     width: 100%;
@@ -190,6 +190,7 @@ input:checked + .slider:before {
     bottom: 50px;
     background-color: rgb(74, 71, 71);
     z-index: 1;
+    align-items: baseline;
 }
 
 #lyrics-panel{
@@ -216,4 +217,12 @@ input:checked + .slider:before {
     color: #fff;
     font-size: 5rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.visualizer-container__bar {
+    display: inline-block;
+    position: relative;
+    background-image: linear-gradient(red,orange,white);
+    margin: 390px 0px;
+    width: 8px;
 }
