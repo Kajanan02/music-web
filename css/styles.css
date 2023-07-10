@@ -121,6 +121,7 @@ body {
     font-weight: bold;
     font-size: 14px;
     letter-spacing: 1px;
+    width: 88px;
 }
 .topbar .navbar ul li a:hover,
 .topbar .navbar ul li a:active,
