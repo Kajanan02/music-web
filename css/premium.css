@@ -35,7 +35,7 @@
      color: #fff !important;
  }
  .artist-login-container{
-     height: calc(100vh - 87px);
+     height: calc(100vh - 96px);
      overflow: hidden;
  }
 .bg-play{
@@ -58,8 +58,8 @@
 .place-holder::placeholder {
     color: #4d4d4d;
     font-style: italic;
-
 }
+
 .list-features ul {
     list-style: none;
 }

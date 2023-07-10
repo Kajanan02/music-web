@@ -5,7 +5,7 @@
 
 body {
     color: #ffffff;
-    background-color: #000;
+    background-color: rgb(22, 28, 36);
 }
 
 .container {
@@ -37,5 +37,43 @@ thead{
 
 .right{
     right: 0;
-    background-color: rgba(38, 132, 82, 0.5);
+    /*background-color: rgba(38, 132, 82, 0.5);*/
+}
+.nav-items{
+    color: #b3b3b3 !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+}
+.nav-items:hover {
+    color: #ffffff !important;
+    font-size: 15px;
+}
+
+.bg-song-list {
+    background-color: rgb(33, 43, 54);
+    color: rgb(255, 255, 255);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-image: none;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 7px;
+    padding: 0px;
+    /*z-index: 0;*/
+}
+.modal-content{
+    z-index: 999999999999999999!important;
+}
+.table>:not(caption)>*>*{
+    background-color: transparent !important;
+    color: white;
+}
+.table>:not(caption)>*>*{
+    text-align: left;
+    padding-left: 20px;
+}
+.table-hover>tbody>tr:hover>*{
+    color: #090909;
 }
