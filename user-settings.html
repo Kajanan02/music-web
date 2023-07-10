@@ -16,13 +16,20 @@
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 <script src="js/render-topbar.js"></script>
 <div class="main-container">
     <h2 class=" text-white">Settings</h2>
 
     <form class="mx-5 my-5 px-5">
-        <!-- CHANGE PROFILE PIC GOES HERE -->
+        <div class="row">
+            <div class="col-md-12 mb-5 d-flex justify-content-center">
+                <input type="file" enc_type="multipart/form-data" 
+                    class="profile_picture form-control bg-light place-holder" placeholder="Profile Picture"
+                    id="profile_picture">
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-6 mb-3">
