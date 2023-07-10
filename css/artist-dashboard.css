@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: #ffffff;
+    background-color: #000;
+}
+
+.container {
+    width: 100%;
+    padding-top: 40px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.custom-file-input {
+    cursor: pointer;
+}
+
+input[type="text"], input[type="date"], input[type="file"]{
+    margin-bottom: 25px;
+}
+
+thead{
+    text-align: center;
+}
+
+.left{
+    left: 0;
+    background-color: rgba(105, 104, 104, 0.5);
+}
+
+.right{
+    right: 0;
+    background-color: rgba(38, 132, 82, 0.5);
+}

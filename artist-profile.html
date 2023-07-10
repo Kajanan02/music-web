@@ -25,34 +25,7 @@
     <!-- Sidebar Rendered from the Template Goes Here -->
 
     <div class="main-container">
-        <div class="topbar">
-            <div class="prev-next-buttons">
-                <button type="button" class="fa fas fa-chevron-left"></button>
-                <button type="button" class="fa fas fa-chevron-right"></button>
-            </div>
-
-            <div class="navbar">
-                <ul>
-                    <li>
-                        <a href="premium.html">Premium</a>
-                    </li>
-                    <li>
-                        <a href="#">Support</a>
-                    </li>
-                    <li>
-                        <a href="artist.html">For Artists</a>
-                    </li>
-                    <li>
-                        <a href="#">Download</a>
-                    </li>
-                    <li class="divider">|</li>
-                    <li>
-                        <a href="signup.html">Sign Up</a>
-                    </li>
-                </ul>
-                <a type="button" class="nav-btn" href="login.html">Log In</a>
-            </div>
-        </div>
+        <!-- Topbar renders here -->
 
         <div class="container-fluid">
             <div class="row">
@@ -96,14 +69,14 @@
                 <div class="list">
                     <div class="item">
                         <img src="assets/album-art/Guru.jpg" />
-                        <div class="play" onclick="setTrackIndex(6, 'general')">
+                        <div class="play" onclick="setTrackIndex(6)">
                             <span class="fa fa-play"></span>
                         </div>
                         <h4>Aaruyiae</h4>
                         <p>From Guru Soundtrack</p>
                     </div>
 
-                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="item">
                         <img src="assets/album-art/Sangamam.jpeg" />
                         <div class="play">
                             <span class="fa fa-play"></span>
@@ -112,7 +85,7 @@
                         <p>From Sangamam</p>
                     </div>
 
-                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="item">
                         <img src="assets/album-art/Jai-Ho.jpeg" />
                         <div class="play">
                             <span class="fa fa-play"></span>
@@ -133,7 +106,7 @@
                         <p>Soundtrack from original motion pricture Guru 2007</p>
                     </div>
 
-                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="item">
                         <img src="assets/album-art/Sangamam.jpeg" />
                         <div class="play">
                             <span class="fa fa-play"></span>
@@ -142,7 +115,7 @@
                         <p>Soundtrack from original motion pricture Sangamam 1999</p>
                     </div>
 
-                    <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="item">
                         <img src="assets/album-art/Jai-Ho.jpeg" />
                         <div class="play">
                             <span class="fa fa-play"></span>
@@ -151,36 +124,17 @@
                         <p>Soundtrack from original motion pricture Jai-Jo 2014</p>
                     </div>
                 </div>
+                <div style="margin-bottom: 180px;"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        let playStatus = false;
-        let artistPlay = document.getElementById("artist-song");
-        let playBtn = document.querySelector(".play");
-
-        function play(){
-            artistPlay.play();
-            playStatus = true;
-            playBtn.innerHTML = "<span class='fa fa-pause'></span>";
-        }
-        function pause(){
-            artistPlay.pause();
-            playStatus = false;
-            playBtn.innerHTML = "<span class='fa fa-play'></span>";
-        }
-
-        function artistPlayPause(){
-            if(!playStatus) play();
-            else pause();
-        }
-    </script>
-
     <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+    <script src="js/render-topbar.js"></script>
     <script src="js/render-siderbar.js"></script>
     <script src="js/render-player.js"></script>
     <script src="js/audio-player.js"></script>
+    
 </body>
 
 </html>

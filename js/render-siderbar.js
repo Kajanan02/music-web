@@ -31,28 +31,21 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="user-songs.html">
                         <span class="fa fa-fw fa-headphones"></span>
                         <span>Songs</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="user-playlists.html">
                         <span class="fa fa-fw fa-music"></span>
                         <span>Playlists</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="fa fa-fw fa-credit-card"></span>
-                        <span>Subscriptions</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="user-settings.html">
                         <span class="fa fa-fw fa-cogs"></span>
                         <span>Settings</span>
                     </a>
