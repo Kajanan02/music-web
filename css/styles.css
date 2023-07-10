@@ -77,9 +77,10 @@ body {
 }
 
 .main-container {
-    margin-left: 245px;
-    margin-top: 80px;
-    position: absolute;
+    /*margin-left: 245px;*/
+    margin-top: 20px;
+    width: calc(100vw - 245px);
+   margin-left: auto;
     background-color: #121212;
 }
 
@@ -88,7 +89,7 @@ body {
     justify-content: space-between;
     background-color: #101010;
     padding: 14px 30px;
-    padding-bottom: 50px;
+    padding-bottom: 12px;
 }
 .topbar .prev-next-buttons button {
     color: #7a7a7a;
@@ -112,7 +113,7 @@ body {
 .topbar .navbar ul li {
     display: inline-block;
     margin: 0px 8px;
-    width: 85px;
+    width: 90px;
 }
 .topbar .navbar ul li a {
     color: #b3b3b3;
@@ -252,3 +253,33 @@ body {
     border-radius: 40px;
     cursor: pointer;
 }
+.place-holder::placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+}
+.btn-go{
+    color: black !important;
+    background-color: #75F991 !important;
+    border-color: #75F991 !important;
+    font-weight: 500;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+
+}
+.btn-go:hover{
+    color: #fff !important;
+    background-color: transparent !important;
+    border-color: #75F991 !important;
+}
+.nav-items{
+    color: #b3b3b3 !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+}
+.nav-items:hover {
+    color: #ffffff !important;
+    font-size: 15px;
+}
+
