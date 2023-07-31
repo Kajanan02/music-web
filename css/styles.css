@@ -282,4 +282,20 @@ body {
     color: #ffffff !important;
     font-size: 15px;
 }
+.nav-dashboard{
+    padding: 0 3rem !important;
+}
+@media (max-width: 500px) {
+    .nav-dashboard {
+        padding: 10px !important;
+    }
+    .nav-dashboard .navbar-brand{
+        padding: 0 !important;
+    }
+}
+.navbar-toggler{
+    background-color: #61666f !important;
+}
+
+
 

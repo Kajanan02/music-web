@@ -5,13 +5,13 @@
 .bg-body{
 background-color: #131313 !important;
     height: 100vh;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .main-heading{
     color: white;
 }
 .main-header {
-    height: calc(100vh );;
+    height: calc(100vh - 97px);
     background-image: url(../assets/bg.jpg);
     background-size: cover;
     background-position: center;
@@ -84,5 +84,25 @@ background-color: #131313 !important;
 .place-holder::placeholder {
     color: #4d4d4d !important;
     font-style: italic;
-
 }
+@media (max-width: 768px) {
+    .main-header {
+        height: auto;
+    }
+    .main-heading{
+        font-size: 36px;
+    }
+}
+
+body{
+    background-color: #131313 !important;
+}
+@media (max-width: 500px) {
+    .nav-dashboard {
+        padding: 10px !important;
+    }
+    .nav-dashboard .navbar-brand{
+        padding: 0 !important;
+    }
+}
+

@@ -12,10 +12,15 @@
 .header-img{
     border-radius: 40px;
 }
+.get-start-btn{
+    width: 200px;
+    margin-bottom: 20px;
+}
+
 .get-start-btn:hover{
     color: #5ff550 !important;
 }.header-artist{
-     height: calc(100vh - 76px);
+     min-height: calc(100vh - 76px);
  }
  .bg-black{
      background-color: #000;
@@ -92,8 +97,12 @@
     border: 2px solid #fff;
     border-radius: 12px;
     padding: 12px 32px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
     top: -20px;
-    left: 115px;
+    width: fit-content;
+    right: 0;
     font-weight: 500;
     box-shadow: 3px 3px 4px rgba(254, 244, 69, .24);
 }
@@ -106,4 +115,41 @@
     margin-bottom: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+@media (max-width: 768px) {
+    .artist-login-container {
+        height: auto;
+    }
+    .artist-login-image{
+        justify-content: center;
+    }
+    .artist-login-container form{
+        padding: 0 !important;
+        margin: 40px 0 !important;
+    }
+
+}
+.nav-dashboard{
+    padding: 0 3rem !important;
+}
+@media (max-width: 500px) {
+    .nav-dashboard {
+        padding: 10px !important;
+    }
+    .nav-dashboard .navbar-brand{
+        padding: 0 !important;
+    }
+    .popular-box{
+        padding: 12px 16px;
+    }
+}
+.navbar-toggler{
+    background-color: #61666f !important;
+}
+body {
+    background: rgb(33,37,41);
+    height: 100%;
+    margin: 0;
+}
+
+
 
