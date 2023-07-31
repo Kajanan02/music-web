@@ -1,6 +1,6 @@
 const sidebar = document.createElement("template");
 sidebar.innerHTML = `
-    <div class="sidebar">
+    <div class="sidebar" id="slide-bar">
         <div class="logo">
             <a href="#">
                 <img src="assets/logos/melomaniac.png" alt="Logo" />

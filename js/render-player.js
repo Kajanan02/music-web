@@ -4,7 +4,7 @@ audioPlayer.innerHTML = `
     <div id="lyrics-panel" class="self-align-center">
         <p id="lyric"></p>
     </div>
-    <div class="container-fluid player">
+    <div class="container-fluid player m-0 w-100">
         <div class="row">
             <div class="col-12 seek-slider-container">
                 <div class="slider-container">
