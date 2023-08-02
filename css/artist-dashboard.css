@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    width: 100%;
+    /*width: 100%;*/
     padding-top: 40px;
 }
 
@@ -60,7 +60,7 @@ thead{
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 7px;
-    padding: 0px;
+    padding: 3px;
     /*z-index: 0;*/
 }
 .modal-content{
@@ -76,4 +76,26 @@ thead{
 }
 .table-hover>tbody>tr:hover>*{
     color: #090909;
+}
+.navbar-toggler{
+    background-color: #61666f !important;
+}
+@media (max-width: 768px) {
+    .bg-song-list{
+        overflow: scroll;
+    }
+    .bg-song-list .table {
+        min-width: 900px !important;
+    }
+}
+.nav-dashboard{
+    padding: 0 3rem !important;
+}
+@media (max-width: 500px) {
+    .nav-dashboard {
+        padding: 10px !important;
+    }
+    .nav-dashboard .navbar-brand{
+        padding: 0 !important;
+    }
 }

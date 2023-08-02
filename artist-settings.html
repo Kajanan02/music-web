@@ -3,6 +3,7 @@
 <head>
     <title>Settings</title>
     <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap 5.0.2 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -18,31 +19,44 @@
 </head>
 
 <body style="background-color: rgb(22, 28, 36)">
-<nav class="navbar  px-5 bg-dark shadow">
+<nav class="navbar navbar-expand-lg nav-dashboard bg-dark shadow">
     <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1 px-5 text-white"> 
                     <a href="index.html"> <img src="assets/logo-transparent.png" alt="Logo" width="200px"/></a>
                 </span>
-        <div>
-            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-dashboard.html">Dashboard</a>
-            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-settings.html">Settings</a>
-            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-login.html">Logout</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                <li class="nav-item">
+                    <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
+                       href="artist-dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
+                       href="artist-settings.html">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
+                       href="artist-login.html">Logout</a>
+                </li>
+            </ul>
+
+<!--            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-dashboard.html">Dashboard</a>-->
+<!--            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-settings.html">Settings</a>-->
+<!--            <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="artist-login.html">Logout</a>-->
 
         </div>
     </div>
 </nav>
 
 <div class="container-md">
-    <h5 class="ms-3 mt-4 fw-semibold ps-4  fs-2 text-white mt-4">Settings</h5>
+    <h5 class="ms-md-3 mt-4 fw-semibold ps-4  fs-2 text-white mt-4">Settings</h5>
 
-    <form class="mx-5 my-5 px-5">
-        <div class="row">
-            <div class="col-md-12 mb-5 d-flex justify-content-center">
-                <input type="file" enc_type="multipart/form-data" 
-                    class="form-control bg-light place-holder profile_picture" placeholder="Profile Picture"
-                    id="profile_picture">
-            </div>
-        </div>
+    <form class="mx-md-5 my-md-5 px-md-5 my-5 mx-2">
+        <!-- CHANGE PROFILE PIC GOES HERE -->
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="artist_name" class="form-label text-white">First Name</label>
