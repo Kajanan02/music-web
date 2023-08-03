@@ -20,8 +20,7 @@ class User{
                 $pstmt->execute();
                 $a = $pstmt->fetch(PDO::FETCH_ASSOC);
                 if($a > 0){
-                    //encrypted = password_hash($input_password, PASSWORD_BCRYPT);
-                    if($a["password"] == $input_password){
+                    if(password_verify($input_password, $a["password"])){
                         header("Location: ../index.php");
                     }
                     else{

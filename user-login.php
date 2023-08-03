@@ -47,7 +47,7 @@
                     <form method="POST" action="./scripts/prcoess-login.php">
                         <input type="hidden" name="user_type" value="listener"/>
 
-                        <label for="exampleFormControlInput1" class="form-label-login">Email address</label>
+                        <label for="exampleFormControlInput1" class="form-label-login">Username</label>
                         <input type="text" class="form-control place-holder" id="exampleFormControlInput1"
                             placeholder="Enter Username" name="username">
 
