@@ -1,11 +1,10 @@
 const audioPlayer = document.createElement("template");
 audioPlayer.innerHTML = `
-    <div id="background-panel"></div>
+    <div id="lyrics-panel-background"></div>
     <div id="lyrics-panel" class="self-align-center">
         <p id="lyric"></p>
     </div>
-    
-    <div class="container-md player m-0 w-100">
+    <div class="container-fluid player m-0 w-100">
         <div class="row">
             <div class="col-12 seek-slider-container">
                 <div class="slider-container">
@@ -16,34 +15,29 @@ audioPlayer.innerHTML = `
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-3">
-                <div class="track-info-container-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col track-info-container-main">
                     <div class="track-art"></div>
                     <div class="track-info-container-sub">
                         <div class="track-name">Track Name</div>
                         <div class="track-artist">Track Artist</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-5">
-                <div class="playpause-container">
+                <div class="col playpause-container">
                     <div class="prev-track" onclick="prevTrack()">
                         <i class="fa fa-step-backward fa-3x"></i>
                     </div>
                     <div class="play-pause-track" onclick="playPauseTrack()">
-                        <i class="fa fa-play-circle fa-4x"></i>
+                        <i class="fa fa-play-circle fa-5x"></i>
                     </div>
                     <div class="next-track" onclick="nextTrack()">
                         <i class="fa fa-step-forward fa-3x"></i>
                     </div>
                 </div>
-            </div>
 
-            <div class="col">
-                <div class="right-main-container">
+                <div class="col right-main-container">
                     <div>
                         <div class="slider-container">
                             <i class="fa fa-volume-down"></i>
@@ -61,13 +55,14 @@ audioPlayer.innerHTML = `
                         </div>
                         <div>
                             Visualizer: <label class="switch">
-                                <input type="checkbox" id="visualizer-switch" onchange="viewVisualizer()">
+                                <input type="checkbox" id="visualizer">
                                 <span class="slider round"></span>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <div class="row" style="margin-bottom: 15px;"></div>
     </div>`;
 

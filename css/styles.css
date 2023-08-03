@@ -122,7 +122,6 @@ body {
     font-weight: bold;
     font-size: 14px;
     letter-spacing: 1px;
-    width: 88px;
 }
 .topbar .navbar ul li a:hover,
 .topbar .navbar ul li a:active,
@@ -348,25 +347,3 @@ body {
 
 
 
-.profile_picture{
-    width: 135px;
-    height: 135px;
-    border-radius: 50%;
-    background-image: url("../assets/profile-pic-upload.png");
-    object-fit: fill;
-    object-position: 30% 20%;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #fff;
-    box-sizing: border-box;
-    padding: 125px 0 0 0;
-}
-
-/*. DOES NOT WORK! CHECK
-.profile-picture::-webkit-file-upload-button {
-    display: none;
-}
-
-.profile-picture::file-selector-button {
-    display: none;
-}*/
