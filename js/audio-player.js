@@ -15,6 +15,7 @@ let total_duration = document.querySelector(".total-duration");
 let track_index = 0;
 let isPlaying = false;
 let updateTimer;
+const NUMBER_OF_BARS = 150; // No of bars in the visualizer
 
 let curr_track = document.createElement('audio');
 
@@ -150,6 +151,7 @@ function nextTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
+    viewVisualizer();
 }
 
 function prevTrack(){
@@ -161,6 +163,7 @@ function prevTrack(){
     loadTrack(track_index);
     playTrack();
     viewLyricsPanel();
+    viewVisualizer();
 }
 
 function seekTo(){
@@ -197,13 +200,17 @@ function seekUpdate(){
 function viewLyricsPanel(){
     let isEnabled = document.getElementById("lyrics-switch").checked;
     if(isEnabled){
+        document.getElementById("visualizer-switch").checked = false;
+        hidebars();
+
         document.getElementById("lyric").innerHTML = "";
-        document.getElementById("lyrics-panel-background").style.display = "block";
+        document.getElementById("background-panel").style.backgroundColor = "rgb(74, 71, 71)";
+        document.getElementById("background-panel").style.display = "block";
         document.getElementById("lyrics-panel").style.backgroundImage = "url(" + track_list[track_index].artistArt + ")";
         document.getElementById("lyrics-panel").style.display = "block";
     }
     else{
-        document.getElementById("lyrics-panel-background").style.display = "none";
+        document.getElementById("background-panel").style.display = "none";
         document.getElementById("lyrics-panel").style.display = "none";
     }
 }
@@ -279,4 +286,83 @@ function syncLyrics(lyrics, time) {
     const closest = Math.min(...scores); // get the smallest value from scores
 
     return scores.indexOf(closest); // return the index of closest lyric
+}
+
+function viewVisualizer(){
+    let isEnabled = document.getElementById("visualizer-switch").checked;
+    if(isEnabled){
+        document.getElementById("lyrics-switch").checked = false;
+        document.getElementById("lyrics-panel").style.display = "none";
+
+        document.getElementById("background-panel").style.backgroundColor = "rgb(0,0,0,1)";
+        showbars();
+        document.getElementById("background-panel").style.display = "block";
+        visualizeAudio();
+    }
+    else{
+        document.getElementById("background-panel").style.display = "none";
+        hidebars();
+    }
+}
+
+function visualizeAudio(){
+    const audio = curr_track;
+    const audioContext = new AudioContext();
+    const audioSource = audioContext.createMediaElementSource(audio);
+    
+    const analyzer = audioContext.createAnalyser();
+    audioSource.connect(analyzer); //Connect Audio to Analyzer
+    audioSource.connect(audioContext.destination); //Connect Audio to Context
+
+    const frequencyData = new Uint8Array(analyzer.frequencyBinCount);
+    analyzer.getByteFrequencyData(frequencyData);
+    console.log("frequencyData", frequencyData);
+
+    const visualizerContainer = document.getElementById("background-panel");
+
+    // Creating pre-defined bars
+    for(let i=0; i<NUMBER_OF_BARS; i++){
+        const bar = document.createElement("div");
+        bar.setAttribute("id", "bar" + i);
+        bar.setAttribute("class", "visualizer-container__bar");
+        visualizerContainer.appendChild(bar);
+    }
+
+    function renderFrame(){
+        analyzer.getByteFrequencyData(frequencyData);
+
+        for(let i=0; i<NUMBER_OF_BARS; i++){
+            // length of frequencyData array = 1024
+            const index = (i+10)*2;
+            const fd = frequencyData[index]; // fd = value between 0-255
+            const bar = document.querySelector("#bar" + i);
+            
+            if(!bar) continue;
+    
+            // if fd = undefined --> set fd to 0
+            // fd is at least 4px high for visual effects
+            const barHeight = Math.max(4, fd || 0);
+            bar.style.height = barHeight + "px";
+        }
+        window.requestAnimationFrame(renderFrame);
+    }
+
+    renderFrame();
+}
+
+function hidebars(){
+    console.log(document.getElementById("bar0"));
+    if(document.getElementById("bar0") != null){
+        for(let i=0; i<NUMBER_OF_BARS; i++){
+            document.getElementById("bar"+i).style.display = "none";
+        }
+    }
+}
+
+function showbars(){
+    if(document.getElementById("bar0") != null){
+        for(let i=0; i<NUMBER_OF_BARS; i++){
+            document.getElementById("bar"+i).style.display = "inline-block";
+        }
+    }    
 }
