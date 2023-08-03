@@ -2,7 +2,7 @@
 
 namespace classes;
 
-require_once "/Applications/XAMPP/xamppfiles/htdocs/music-web/classes/db-connector.php";
+require_once "../classes/db-connector.php";
 
 use classes\DBConnector;
 use Exception;
@@ -61,10 +61,10 @@ class Listener{
             $pstmt->bindValue(6, $this->password);
             $a = $pstmt->execute();
             if($a > 0){
-                echo "Registration successful";
+                header("Location: ../../user-login.php?error=0");
             }
             else{
-                echo "Registration failed";
+                header("Location: ../../user-signup.php?error=6"); //registration unsuccessful
             }
         }
         catch(PDOException $e){

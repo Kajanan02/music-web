@@ -2,7 +2,7 @@
 
 namespace classes;
 
-require_once "/Applications/XAMPP/xamppfiles/htdocs/music-web/classes/db-connector.php";
+require_once "../classes/db-connector.php";
 
 use classes\DBConnector;
 use Exception;
