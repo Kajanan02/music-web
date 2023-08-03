@@ -73,6 +73,35 @@
                             <input type="password" name="cpassword" id="confirm" placeholder="Confirm Password"
                                 class="form-control place-holder">
 
+                            <?php
+                                if(isset($_GET["error"])){
+                                    $msg = "";
+                                    $error = $_GET["error"];
+
+                                    if($error == "1"){
+                                        $msg = "Unauthorized access to the page";
+                                    }
+                                    elseif($error == "2"){
+                                        $msg = "You must fill all the fields";
+                                    }
+                                    elseif($error == "3"){
+                                        $msg = "Passwords does not match";
+                                    }
+                                    elseif($error == "4"){
+                                        $msg = "Sorry. This username exists. Please try another one";
+                                    }
+                                    elseif($error == "5"){
+                                        $msg = "Invalid user";
+                                    }
+                                    elseif($error == "6"){
+                                        $msg = "Registration was unscuessful. Please try again.";
+                                    }
+                                }
+                                ?>
+                                <p class="text-danger mt-3"><?php echo $msg; ?></p>
+                                <?php
+                            ?>
+
                             <div class="d-flex justify-content-center">
                                 <input type = "submit" class="btn btn-primary fw-medium px-5 py-2 mt-5 btn-go" name="signup">Sign Up</a>
                             </div>

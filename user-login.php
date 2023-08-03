@@ -72,9 +72,19 @@
                                 elseif($error == "4"){
                                     $msg = "Username or password cannot be empty";
                                 }
-                                ?>
-                                <p class="text-danger mt-3"><?php echo $msg; ?></p>
-                                <?php
+                                elseif($error == "0"){
+                                    $msg = "You registered successfully. Please Log In.";
+                                }
+                                if($error == "0"){
+                                    ?>
+                                    <p class="text-success mt-3"><?php echo $msg; ?></p>
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <p class="text-danger mt-3"><?php echo $msg; ?></p>
+                                    <?php
+                                }
                             }
                         ?>
                         
