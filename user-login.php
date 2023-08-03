@@ -82,9 +82,18 @@
                             <input type="submit" name="login" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go" value="Log In">
                         </div>  
                     </form>
+
+                    <div class="row d-flex mt-5">
+                        <div class="col justify-content-start">
+                                <p><a href="" class="text-light">Forgot Password?</a></p>
+                        </div>
+                        <div class="col ms-auto text-end">
+                            <p><a href="user-signup.php" class="text-light">Not registered?</a></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
     </div>
 </body>
