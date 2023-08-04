@@ -36,7 +36,27 @@ class User{
             }
         }
         elseif($user_type == "artist"){
-
+            $query = "SELECT username, password from artist where username=?";
+            try{
+                $pstmt = $con->prepare($query);
+                $pstmt->bindValue(1, $input_username);
+                $pstmt->execute();
+                $a = $pstmt->fetch(PDO::FETCH_ASSOC);
+                if($a > 0){
+                    if(password_verify($input_password, $a["password"])){
+                        header("Location: ../artist-dashboard.php");
+                    }
+                    else{
+                        header("Location: ../artist-login.php?error=2"); // username and password does not match
+                    }
+                }
+                else{
+                    header("Location: ../artist-login.php?error=1"); //user does not exist
+                }
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
         }
     }
 }
