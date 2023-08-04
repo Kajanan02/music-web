@@ -35,15 +35,15 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
                 <li class="nav-item">
                     <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
-                       href="artist-dashboard.html">Dashboard</a>
+                       href="artist-dashboard.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
-                       href="artist-settings.html">Settings</a>
+                       href="artist-settings.php">Settings</a>
                 </li>
                 <li class="nav-item">
                     <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
-                       href="artist-login.html">Logout</a>
+                       href="artist-login.php">Logout</a>
                 </li>
             </ul>
 
