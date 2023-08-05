@@ -18,19 +18,33 @@ if (isset($_POST["signup"])) {
 
     } else {
         $temp_con = DBConnector::getConnection();
-        $query_temp = "SELECT artist_name FROM artist WHERE artist_name = ?";
-        $pstmt_temp = $temp_con->prepare($query_temp);
-        $pstmt_temp->bindValue(1, $_POST["name"]);
-        
-        if (is_null($pstmt_temp->execute())) {
+        $query_temp1 = "SELECT artist_name FROM artist WHERE artist_name = ?";
+        $pstmt_temp1 = $temp_con->prepare($query_temp1);
+        $pstmt_temp1->bindValue(1, $_POST["name"]);
+        $pstmt_temp1->execute();
+
+        if ($pstmt_temp1->rowCount() != 0) {
             header("Location: ./artist-register.php?error=4"); //artist exists
-        } else {
-            $_SESSION["name"] = $_POST["name"];
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["city"] = $_POST["city"];
-            $_SESSION["country"] = $_POST["country"];
-            $_SESSION["username"] = $_POST["username"];
-            $_SESSION["password"] = $_POST["password"];
+
+        } 
+        else {
+            $query_temp2 = "SELECT username FROM artist WHERE username = ?";
+            $pstmt_temp2 = $temp_con->prepare($query_temp2);
+            $pstmt_temp2->bindValue(1, $_POST["username"]);
+            $pstmt_temp2->execute();
+            
+            if ($pstmt_temp2->rowCount() != 0) {
+                header("Location: ./artist-register.php?error=5"); //username exists
+    
+            }
+            else{
+                $_SESSION["name"] = $_POST["name"];
+                $_SESSION["email"] = $_POST["email"];
+                $_SESSION["city"] = $_POST["city"];
+                $_SESSION["country"] = $_POST["country"];
+                $_SESSION["username"] = $_POST["username"];
+                $_SESSION["password"] = $_POST["password"];
+            }
         ?>
 
             <!DOCTYPE html>

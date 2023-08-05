@@ -54,6 +54,9 @@
                         elseif($error == "4"){
                             $msg = "Sorry, this artist exists. Please use a different name.";
                         }
+                        elseif($error == "5"){
+                            $msg = "Sorry, this username exists. Please choose another one";
+                        }
                         ?>
                         <div class="mb-3">
                             <p class="text-danger h4"><?php echo $msg; ?></p>
