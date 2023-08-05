@@ -1,9 +1,3 @@
-<?php
-    require_once './scripts/paypal-config.php'; 
-    require_once "./classes/db-connector.php";
-    use classes\DBConnector;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,10 +35,36 @@
         </div>
 
         <div class="col-md-6 d-flex align-items-center justify-content-center">
-            <form class="mx-5 my-5 px-5" method="POST" action="<?php echo PAYPAL_URL; ?>">
-                <!--div class="mb-3">
+            <form class="mx-5 my-5 px-5" method="POST" action="./artist-payment.php">
+
+                <?php
+                    if(isset($_GET["error"])){
+                        $error = $_GET["error"];
+                        $msg = "";
+
+                        if($error == "1"){
+                            $msg = "No fields can be empty";
+                        }
+                        elseif($error == "2"){
+                            $msg = "Please choose a country";
+                        }
+                        elseif($error == "3"){
+                            $msg = "Invalid email address";
+                        }
+                        elseif($error == "4"){
+                            $msg = "Sorry, this artist exists. Please use a different name.";
+                        }
+                        ?>
+                        <div class="mb-3">
+                            <p class="text-danger h4"><?php echo $msg; ?></p>
+                        </div>
+                        <?php
+                    }
+                ?>
+
+                <div class="mb-3">
                     <label for="name" class="form-label text-white">Enter Name</label>
-                    <input type="text" name="name" class="form-control bg-dark text-white place-holder" placeholder="Enter Name" id="name" aria-describedby="emailHelp" required>
+                    <input type="text" name="name" class="form-control bg-dark text-white place-holder" placeholder="Enter Artist/ Band Name" id="name" aria-describedby="emailHelp" required>
                 </div>
 
                 <div class="mb-3">
@@ -318,71 +338,17 @@
                 </div-->
 
                 <div class="mb-3">
-                    <label for="plan" class="form-label text-white">Choose your plan</label>
-                    <select name="plan" class="form-control bg-dark place-holder text-white" id="plan" required>
-                        <?php
-                            $query = "SELECT plan_id, plan_name, price FROM subscription WHERE plan_type=?";
-                            try{
-                                $con = DBConnector::getConnection();
-                                $pstmt = $con->prepare($query);
-                                $pstmt->bindValue(1, "Artist");
-                                $pstmt->execute();
-                                $result = $pstmt->fetchAll(PDO::FETCH_ASSOC);
-                                foreach($result as $r){
-                                    ?>
-                                    <option value="<?php echo $r["plan_id"] ?>"><?php echo $r["plan_name"]." - LKR ".$r["price"]; ?></option>
-                                    <?php
-                                }
-                            }
-                            catch(PDOException $e){
-                                echo $e->getMessage();
-                            }
-                        ?>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="card-number" class="form-label text-white">Enter Card Number</label>
-                    <input type="text" name="card-number" class="form-control bg-dark text-white place-holder" placeholder="Enter Card Number" id="card-number" aria-describedby="emailHelp" required>
-                    <div class="row">
-                        <img src="./assets/credit-cards.png" class="img-fluid credit-card mt-3"/>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="expiry" class="form-label text-white">Enter Expiry Date</label>
-                    <input type="month" name="expiry" min="2023-08" value="2023-8" class="form-control bg-dark text-white place-holder" placeholder="Enter Expiry Date" id="expiry" aria-describedby="emailHelp" required>
-                </div>
-
-                <!-- Identify your business so that you can collect the payments. -->
-                <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
-					
-                <!-- Specify a Buy Now button. -->
-                <input type="hidden" name="cmd" value="_xclick">
-                
-                <!-- Specify details about the item that buyers will purchase. -->
-                <input type="hidden" name="item_name" value="<?php echo $row['plan_name']; ?>">
-                <input type="hidden" name="item_number" value="<?php echo $row['plan_id']; ?>">
-                <input type="hidden" name="amount" value="<?php echo $row['price']; ?>">
-                <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
-                
-                <!-- Specify URLs -->
-                <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
-                <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
-                <input type="hidden" name="notify_url" value="<?php echo PAYPAL_NOTIFY_URL; ?>">
-
-                <!--div class="mb-3">
-                    <label for="username" class="form-label text-white">Enter Preferred Username</label>
+                    <label for="username" class="form-label text-white mt-3">Enter Preferred Username</label>
                     <input type="text" name="username" class="form-control bg-dark text-white place-holder" placeholder="Enter Username" id="expiry" aria-describedby="emailHelp" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label text-white">Password</label>
                     <input type="password" name="password" class="form-control bg-dark place-holder text-white" placeholder="Enter password" id="exampleInputPassword1" required>
-                </div-->
+                </div>
 
                 <div class="d-flex justify-content-center">
-                    <input type="submit" name="signup" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go" href="artist-login.php" value="Register"/>
+                    <input type="submit" name="signup" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go" value="Register"/>
                 </div>
 
                 <p class="text-white mt-5">Already have access? <a class="text-white ms-1" href="artist-login.php">Login</a></p>
