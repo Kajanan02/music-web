@@ -185,3 +185,10 @@ body {
     width: 9rem;
     height: 2rem;
 }
+
+.product-box{
+    border-style: solid;
+    border-color: #fff;
+    border-width: 1.5px;
+    text-align: center;
+}
