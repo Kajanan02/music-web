@@ -1,5 +1,4 @@
 .player{
-    display: flexbox;
     align-items: center;
     flex-direction: row;
     justify-content: center;
@@ -8,9 +7,9 @@
     left: 189px;
     right: 0;
     position: fixed;
-    width: 80%;
     background-color: #000;
     z-index: 3;
+    width: calc(100vw - 196px) ;
 }
 
 .track-art{

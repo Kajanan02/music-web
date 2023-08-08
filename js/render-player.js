@@ -5,7 +5,7 @@ audioPlayer.innerHTML = `
         <p id="lyric"></p>
     </div>
     
-    <div class="container-md player m-0 w-100">
+    <div class=" player m-0">
         <div class="row">
             <div class="col-12 seek-slider-container">
                 <div class="slider-container">
@@ -18,7 +18,7 @@ audioPlayer.innerHTML = `
         </div>
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <div class="track-info-container-main">
                     <div class="track-art"></div>
                     <div class="track-info-container-sub">
@@ -28,7 +28,7 @@ audioPlayer.innerHTML = `
                 </div>
             </div>
 
-            <div class="col-5">
+            <div class="col-md-5">
                 <div class="playpause-container">
                     <div class="prev-track" onclick="prevTrack()">
                         <i class="fa fa-step-backward fa-3x"></i>
