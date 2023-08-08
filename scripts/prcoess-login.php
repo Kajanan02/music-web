@@ -6,7 +6,12 @@ use classes\User;
 
 if(isset($_POST["login"])){
     if(empty($_POST["username"]) || empty($_POST["password"])){
-        header("Location: ../user-login.php?error=4");
+        if($_POST["user_type"] == "listener"){
+            header("Location: ../user-login.php?error=4");
+        }
+        elseif($_POST["user_type"] == "artist"){
+            header("Location: ../artist-login.php?error=4");
+        }
     }
     else{
         $user = new User();
@@ -17,5 +22,10 @@ if(isset($_POST["login"])){
     }
 }
 else{
-    header("Location: ../user-login.php?error=3");
+    if($_POST["user_type"] == "listener"){
+        header("Location: ../user-login.php?error=4");
+    }
+    elseif($_POST["user_type"] == "artist"){
+        header("Location: ../artist-login.php?error=4");
+    }
 }

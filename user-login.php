@@ -47,7 +47,7 @@
                     <form method="POST" action="./scripts/prcoess-login.php">
                         <input type="hidden" name="user_type" value="listener"/>
 
-                        <label for="exampleFormControlInput1" class="form-label-login">Email address</label>
+                        <label for="exampleFormControlInput1" class="form-label-login">Username</label>
                         <input type="text" class="form-control place-holder" id="exampleFormControlInput1"
                             placeholder="Enter Username" name="username">
 
@@ -72,9 +72,19 @@
                                 elseif($error == "4"){
                                     $msg = "Username or password cannot be empty";
                                 }
-                                ?>
-                                <p class="text-danger mt-3"><?php echo $msg; ?></p>
-                                <?php
+                                elseif($error == "0"){
+                                    $msg = "You registered successfully. Please Log In.";
+                                }
+                                if($error == "0"){
+                                    ?>
+                                    <p class="text-success mt-3"><?php echo $msg; ?></p>
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <p class="text-danger mt-3"><?php echo $msg; ?></p>
+                                    <?php
+                                }
                             }
                         ?>
                         
@@ -82,9 +92,18 @@
                             <input type="submit" name="login" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go" value="Log In">
                         </div>  
                     </form>
+
+                    <div class="row d-flex mt-5">
+                        <div class="col justify-content-start">
+                                <p><a href="" class="text-light">Forgot Password?</a></p>
+                        </div>
+                        <div class="col ms-auto text-end">
+                            <p><a href="user-signup.php" class="text-light">Not registered?</a></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
     </div>
 </body>
