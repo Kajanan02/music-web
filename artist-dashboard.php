@@ -84,6 +84,46 @@
                     <?php
                 }
             }
+
+            if(isset($_GET["s_error"])){
+                $error = $_GET["s_error"];
+
+                if($error == "0"){
+                    $msg = "Song added successfully";
+                }
+                elseif($error == "1"){
+                    $msg = "Please fill out all the fields";
+                }
+                elseif($error == "2"){
+                    $msg = "Lyrics files should be in lrc format";
+                }
+                elseif($error == "3"){
+                    $msg = "Audio files should either be mp3 or ogg";
+                }
+                elseif($error == "4"){
+                    $msg = "Lyrics file should be less than 2MB";
+                }
+                elseif($error == "5"){
+                    $msg = "Audio file should be less tham 10MB";
+                }
+                elseif($error == "6"){
+                    $msg = "Please enter a valid value for track number";
+                }
+                elseif($error == "7" || $error == "8"){
+                    $msg = "An internal error occured. Please try again.";
+                }
+
+                if($error == "0"){
+                    ?>
+                    <p class="mt-4 text-success text-center h5"><?php echo $msg; ?></p>
+                    <?php
+                }
+                else{
+                    ?>
+                    <p class="mt-4 text-danger"><?php echo $msg; ?></p>
+                    <?php
+                }
+            }
         ?>
 
         <h1>Dashboard of 
@@ -155,33 +195,51 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" action="process-song.php" enctype="multipart/form-data">
+                            <form method="POST" action="./scripts/process-song.php" enctype="multipart/form-data">
+                                <input type="hidden" name="artist_id" value="<?php echo $_SESSION["artist_id"]; ?>"/>
+
                                 <div class="modal-body">
                                     <div class="row">                    
                                         <div class="col-md-6 mb-3">
                                             <label for="album_name" class="form-label text-dark">Album Title</label>
-                                            <input type="text" name="album_name" class="form-control" id="album_name" placeholder="Album Title">
+                                            <select name="album_id" class="form-control" id="album_name" placeholder="Album Title" required>
+                                                <?php
+                                                    $query2 = "SELECT album_id, album_name FROM album WHERE artist_id=?";
+                                                    $pstmt2 = $con->prepare($query2);
+                                                    $pstmt2->bindValue(1, $_SESSION["artist_id"]);
+                                                    $pstmt2->execute();
+                                                    $rows = $pstmt2->fetchAll(PDO::FETCH_ASSOC);
+                                                    foreach($rows as $row){
+                                                        ?>
+                                                        <option value = "<?php echo $row["album_id"]; ?>"><?php echo $row["album_name"]; ?></option>
+                                                        <?php
+                                                    }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="song_name" class="form-label text-dark">Song
-                                                Title</label>
-                                            <input type="text" name="song_name" class="form-control" id="song_name" placeholder="Song Title">
+                                            <label for="song_name" class="form-label text-dark">Song Title</label>
+                                            <input type="text" name="song_name" class="form-control" id="song_name" placeholder="Song Title" required>
                                         </div>
                                         <div class="col-md-6 ">
                                             <label for="lrc" class="form-label text-dark">Lyrics</label>
-                                            <input type="file" name="lrc" class="form-control" id="lrc">
+                                            <input type="file" name="lrc" class="form-control" id="lrc" required>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <label for="track_num" class="form-label text-dark">Track Number</label>
-                                            <input type="text" name="track_num" class="form-control" id="track_num" placeholder="Track Number">
+                                            <label for="track_id" class="form-label text-dark">Track Number</label>
+                                            <input type="text" name="track_id" class="form-control" id="track_id" placeholder="Track Number" required>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <label for="audio" class="form-label text-dark">Audio</label>
+                                            <input type="file" name="audio" class="form-control" id="audio" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="genre" class="form-label text-dark">Genre</label>
-                                            <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre">
+                                            <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="collaborations" class="form-label text-dark">Collaborating Artists</label>
-                                            <input type="email" name="collaborations" class="form-control" id="collaborations" placeholder="Collaborating Artists">
+                                            <input type="text" name="collaborations" class="form-control" id="collaborations" value="N/A" placeholder="Collaborating Artists" required>
                                         </div>
                                     </div>
                                 </div>
