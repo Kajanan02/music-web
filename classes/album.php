@@ -40,7 +40,7 @@ class Album{
             $this->album_id = $con->lastInsertId();
             
             if($a <= 0){
-                header("Location: ../artist-dashboard.php?error=4"); //DB Error
+                header("Location: ../artist-dashboard.php?a_error=4"); //DB Error
             }
         }
         catch(PDOException $e){
@@ -58,11 +58,11 @@ class Album{
             $b = $pstmt2->execute();
 
             if($b > 0){
-                header("Location: ../artist-dashboard.php?error=0"); 
+                header("Location: ../artist-dashboard.php?a_error=0"); 
             }
             else{
                 $con->rollback();
-                header("Location: ../artist-dashboard.php?error=5"); //DB Error
+                header("Location: ../artist-dashboard.php?a_error=5"); //DB Error
             }
         }
         catch(PDOException $e){

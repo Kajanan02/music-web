@@ -52,8 +52,8 @@
 
     <div class="container">
         <?php
-            if(isset($_GET["error"])){
-                $error = $_GET["error"];
+            if(isset($_GET["a_error"])){
+                $error = $_GET["a_error"];
                 if($error == "0"){
                     $msg = "Album added successfully";
                 }
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Create</button>
+                                    <input type="submit" class="btn btn-primary" name="addSong" value="Create"/>
                                 </div>
                             </form>                           
                         </div>
