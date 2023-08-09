@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar nav-dashboard  bg-dark shadow">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 px-5 text-white"> <a href="index.html"> <img src="assets/logo-transparent.png" alt="Logo" width="200px" /></a></span>
+            <span class="navbar-brand mb-0 h1 px-5 text-white"> <a href="index.php"> <img src="assets/logo-transparent.png" alt="Logo" width="200px" /></a></span>
         </div>
     </nav>
 
@@ -62,7 +62,7 @@
                             elseif($error == "0"){
                                 $msg = "You registered successfully. Please Log In.";
                             }
-                            if($error == "0"){
+                            if($error == "0"){                            
                                 ?>
                                 <p class="text-success mt-3"><?php echo $msg; ?></p>
                                 <?php
@@ -76,7 +76,7 @@
                     ?>
 
                     <div class="d-flex justify-content-center">
-                        <input type="submit" name="login" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go">Login</a>
+                        <input type="submit" name="login" class="btn btn-primary fw-medium px-5 py-2 mt-4 btn-go" value="Login">
                     </div>
                     <div class="row">
                         <div class="col">
