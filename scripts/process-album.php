@@ -7,16 +7,16 @@ if(isset($_POST["create"])){
     $extension = strtolower(pathinfo($_FILES["album_art"]["name"],PATHINFO_EXTENSION));
 
     if(empty($_POST["artist_id"]) || empty($_POST["album_name"]) || empty($_POST["release_date"]) || empty( $_FILES["album_art"])){
-        header("Location: ../artist-dashboard.php?error=1"); //fill out all the fields
+        header("Location: ../artist-dashboard.php?a_error=1"); //fill out all the fields
     }
     else if($_FILES["album_art"]["size"] > 5000000){
-        header("Location: ../artist-dashboard.php?error=3"); //file size if greater than 5MB
+        header("Location: ../artist-dashboard.php?a_error=3"); //file size if greater than 5MB
     }
     else if($extension != "png" && $extension != "jpg" && $extension != "jpeg"){
-        header("Location: ../artist-dashboard.php?error=2"); //file type is not supported
+        header("Location: ../artist-dashboard.php?a_error=2"); //file type is not supported
     }
     else if($_FILES["album_art"]["size"] > 5000000){
-        header("Location: ../artist-dashboard.php?error=3"); //file size if greater than 5MB
+        header("Location: ../artist-dashboard.php?a_error=3"); //file size if greater than 5MB
     }
     else{
         $album_name = trim($_POST["album_name"]);
