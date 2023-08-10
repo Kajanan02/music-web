@@ -10,7 +10,7 @@ sidebar.innerHTML = `
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <span class="fa fa-fw fa-home"></span>
                         <span>Home</span>
                     </a>

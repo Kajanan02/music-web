@@ -13,7 +13,7 @@ class User{
         $con = DBConnector::getConnection();
     
         if($user_type == "listener"){
-            $query = "SELECT username, password from listener where username=?";
+            $query = "SELECT listener_id, username, password from listener where username=?";
             try{
                 $pstmt = $con->prepare($query);
                 $pstmt->bindValue(1, $input_username);
@@ -22,6 +22,7 @@ class User{
                 if($a > 0){
                     if(password_verify($input_password, $a["password"])){
                         header("Location: ../index.php");
+                        $_SESSION["listener_id"] = $a["listener_id"]; 
                     }
                     else{
                         header("Location: ../user-login.php?error=2");
@@ -36,7 +37,7 @@ class User{
             }
         }
         elseif($user_type == "artist"){
-            $query = "SELECT username, password from artist where username=?";
+            $query = "SELECT artist_id, username, password from artist where username=?";
             try{
                 $pstmt = $con->prepare($query);
                 $pstmt->bindValue(1, $input_username);
@@ -45,6 +46,8 @@ class User{
                 if($a > 0){
                     if(password_verify($input_password, $a["password"])){
                         header("Location: ../artist-dashboard.php");
+                        session_start();
+                        $_SESSION["artist_id"] = $a["artist_id"];
                     }
                     else{
                         header("Location: ../artist-login.php?error=2"); // username and password does not match

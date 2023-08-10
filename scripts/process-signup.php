@@ -40,9 +40,7 @@ if(isset($_POST["signup"])){
 
                 $listener->addListener();
             }
-            elseif($_POST["user_type"] == "artist"){
-
-            }
+            // Artist Signup is removed due to the payment gateway processing needs
             else{
                 header("Location: ../../user-signup.php?error=5"); // invalid user type
             }
