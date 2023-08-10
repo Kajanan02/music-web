@@ -89,7 +89,7 @@
                 $error = $_GET["s_error"];
 
                 if($error == "0"){
-                    $msg = "Song added successfully";
+                    $msg = "Song information saved successfully";
                 }
                 elseif($error == "1"){
                     $msg = "Please fill out all the fields";
@@ -304,12 +304,7 @@
                             </div>   
                         </div>
 
-                        <form method="POST" action="./scripts/process-song.php" class="mt-5 mb-5" enctype="multipart/form-data" 
-                            onsubmit="confirm('Are you sure you want to proceed?')">
-
-                            <input type="hidden" name="selected_song_id" id="selected_song_id" value=""/>
-
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-md-12 mb-3 d-flex justify-content-center">
                                     <img id="sel_song_art" name="sel_song_art" src="" alt="Album Art" width="200" class="img-thumbnail"/>
                                 </div>
@@ -318,7 +313,13 @@
                                 <div class="col-md-12 mb-3 d-flex justify-content-center">
                                     <audio id="sel_audio" name="sel_audio" src="" alt="Album Art" controls>
                                 </div>
-                            </div>
+                        </div> 
+
+                        <form method="POST" action="./scripts/process-song.php" enctype="multipart/form-data" class="mt-5 mb-5"
+                            onsubmit="confirm('This action cannot be undone. Are you sure you want to proceed?')">
+
+                            <input type="hidden" name="selected_song_id" id="selected_song_id" value=""/>
+
                             <div class="row">                    
                                 <div class="col-md-6 mb-3">
                                     <label for="album_name" class="form-label text-dark">Album Title</label>
@@ -362,8 +363,8 @@
                                         <input type="text" name="sel_collaborations" class="form-control" id="sel_collaborations" value="N/A" placeholder="Collaborating Artists" required>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-success" name="updateAlbum" value="Update"/>
-                                <input type="submit" class="btn btn-danger" name="deleteAlbum" value="Delete"/>
+                                <input type="submit" class="btn btn-success" name="updateSong" value="Update"/>
+                                <input type="submit" class="btn btn-danger" name="deleteSong" value="Delete"/>
                             </div>
                         </form>
                     </fieldset>
@@ -450,7 +451,7 @@
                 xhr_album.send();
                 // ===================================================================================
 
-                // UPDATE ALBUM DIV ACCORDINGLY ======================================================
+                // UPDATE SONG DIV ACCORDINGLY ======================================================
                 let sel_song_id = cells[9].textContent; //song id
                 
                 var xhr_song = new XMLHttpRequest();
