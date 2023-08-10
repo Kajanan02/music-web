@@ -39,8 +39,7 @@
                        href="artist-settings.php">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 "
-                       href="artist-login.php">Logout</a>
+                    <a class=" fw-medium px-3 py-1 text-decoration-none nav-items mt-4 " href="./scripts/logout.php">Logout</a>
                 </li>
             </ul>
         </div>

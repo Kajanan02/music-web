@@ -96,14 +96,14 @@
                                     elseif($error == "6"){
                                         $msg = "Registration was unscuessful. Please try again.";
                                     }
+                                    ?>
+                                    <p class="text-danger mt-3"><?php echo $msg; ?></p>
+                                    <?php
                                 }
-                                ?>
-                                <p class="text-danger mt-3"><?php echo $msg; ?></p>
-                                <?php
                             ?>
 
                             <div class="d-flex justify-content-center">
-                                <input type = "submit" class="btn btn-primary fw-medium px-5 py-2 mt-5 btn-go" name="signup">Sign Up</a>
+                                <input type = "submit" class="btn btn-primary fw-medium px-5 py-2 mt-5 btn-go" name="signup"/>
                             </div>
                         </form>
                     </div>
