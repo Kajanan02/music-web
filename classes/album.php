@@ -5,6 +5,7 @@ namespace classes;
 require_once "../classes/db-connector.php";
 use classes\DBConnector;
 use PDOException;
+use PDO;
 
 class Album{
     private $album_id;
@@ -22,6 +23,10 @@ class Album{
 
     public function getAlbumID(){
         return $this->album_id;
+    }
+
+    public function setAlbumID($album_id){
+        $this->album_id = $album_id;
     }
 
     public function setAlbumArt($filename){
@@ -63,6 +68,72 @@ class Album{
             else{
                 $con->rollback();
                 header("Location: ../artist-dashboard.php?a_error=5"); //DB Error
+            }
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function getAlbumDetails($album_id){
+        try{
+            $con = DBConnector::getConnection();
+            $query = "SELECT album_name, release_date, thumbnail_url FROM album WHERE album_id=?";
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $album_id);
+            $pstmt->execute();
+            $result = $pstmt->fetch();
+            return $result;
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function updateAlbum(){
+        try{
+            $con = DBConnector::getConnection();
+            $query = "UPDATE album SET album_name=?, release_date=? WHERE album_id=?";
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $this->album_name);
+            $pstmt->bindValue(2, $this->release_date);
+            $pstmt->bindValue(3, $this->album_id);
+            $a = $pstmt->execute();
+            if($a > 0){
+                header("Location: ../artist-dashboard.php?a_error=0");
+            }
+            else{
+                header("Location: ../artist-dashboard.php?a_error=4");
+            }
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteAlbum(){
+        try{
+            $con = DBConnector::getConnection();
+            $query1 = "SELECT album.thumbnail_url, song.audio, song.lyrics FROM album INNER JOIN song ON song.album_id = album.album_id WHERE song.album_id = ?";
+            $pstmt1 = $con->prepare($query1);
+            $pstmt1->bindValue(1, $this->album_id);
+            $pstmt1->execute();
+            $rows = $pstmt1->fetchAll(PDO::FETCH_NUM);
+            foreach($rows as $row){
+                unlink("../" .$row[0]);
+                unlink("../" .$row[1]);
+                unlink("../" .$row[2]);
+            }
+
+            $query2 = "DELETE FROM album WHERE album_id=?";
+            $pstmt2 = $con->prepare($query2);
+            $pstmt2->bindValue(1, $this->album_id);
+            $a = $pstmt2->execute();
+            if($a > 0){
+                header("Location: ../artist-dashboard.php?a_error=0");
+            }
+            else{
+                header("Location: ../artist-dashboard.php?a_error=4");
             }
         }
         catch(PDOException $e){
