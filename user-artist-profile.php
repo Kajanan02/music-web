@@ -76,12 +76,10 @@
     <div class="main-container">
         <div class="container-fluid">
             <div class="cover position-relative">
-                <!--                        <img src="assets/artist-art/A.R.Rahman.jpeg" class="cover-image img-fluid">-->
                 <div class="">
                     <div class="artist-header">
                         <div class="d-flex justify-content-center">
                             <div class=" mobile-hide">
-                                <!--input type="file" enctype="multi-part/formdata"-->
                                 <img src="assets/artist-art/A.R.Rahman.jpeg" class="col-4 align-self-start img-thumbnail profile-picture">
                             </div>
                             <div class="">

@@ -76,7 +76,7 @@
             <h3 class="letter">A</h3>
             <div class="row letter-section">
                 <div class="col">
-                    <a href="artist-profile.html" class="link">
+                    <a href="user-artist-profile.php" class="link">
                         <img src="assets/artist-art/A.R.Rahman.jpeg" class="img">
                         <p class="artist-name">A.R Rahman</p>
                     </a>
