@@ -17,35 +17,35 @@ sidebar.innerHTML = `
                 </li>
 
                 <li>
-                    <a href="user-artists.html">
+                    <a href="user-artists.php">
                         <span class="fa fa-fw fa-users"></span>
                         <span>Artists</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="user-albums.html">
+                    <a href="user-albums.php">
                         <span class="fa fa-fw fa-play"></span>
                         <span>Albums</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="user-songs.html">
+                    <a href="user-songs.php">
                         <span class="fa fa-fw fa-headphones"></span>
                         <span>Songs</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="user-playlists.html">
+                    <a href="user-playlists.php">
                         <span class="fa fa-fw fa-music"></span>
                         <span>Playlists</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="user-settings.html">
+                    <a href="user-settings.php">
                         <span class="fa fa-fw fa-cogs"></span>
                         <span>Settings</span>
                     </a>

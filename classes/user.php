@@ -13,7 +13,7 @@ class User{
         $con = DBConnector::getConnection();
     
         if($user_type == "listener"){
-            $query = "SELECT listener_id, username, password from listener where username=?";
+            $query = "SELECT listener_id, username, password FROM listener WHERE username=?";
             try{
                 $pstmt = $con->prepare($query);
                 $pstmt->bindValue(1, $input_username);
@@ -22,6 +22,7 @@ class User{
                 if($a > 0){
                     if(password_verify($input_password, $a["password"])){
                         header("Location: ../index.php");
+                        session_start();
                         $_SESSION["listener_id"] = $a["listener_id"]; 
                     }
                     else{
