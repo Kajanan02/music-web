@@ -406,7 +406,7 @@
             <div class="mb-3">
                 <label for="artist-bio" class="form-label text-white">Description</label>
                 <textarea rows="10" cols="10" name="artist-bio" class="form-control bg-dark text-white place-holder"
-                          placeholder="STORED bio IN DB" id="artist-bio">
+                          placeholder="Indicate line breaks with <br>" id="artist-bio">
                 </textarea>
             </div>
 

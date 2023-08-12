@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
 ?>
 
 <!DOCTYPE html>
@@ -73,82 +76,31 @@
 
     <div class="main-container">
         <div class="container-fluid">
-            <h3 class="letter">A</h3>
             <div class="row letter-section">
-                <div class="col">
-                    <a href="user-artist-profile.php" class="link">
-                        <img src="assets/artist-art/A.R.Rahman.jpeg" class="img">
-                        <p class="artist-name">A.R Rahman</p>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/Anne_Marie.jpg" class="img">
-                        <p class="artist-name">Anne Marie</p>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/ABBA.png" class="img">
-                        <p class="artist-name">ABBA</p>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/Adele.jpg" class="img">
-                        <p class="artist-name">Anne Marie</p>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/Alan_Walker.jpg" class="img">
-                        <p class="artist-name">Alan Walker</p>
-                    </a>
-                </div>
-            </div>
-
-            <h3 class="letter">D</h3>
-            <div class="row">
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/Daddy-Yankee.jpg" class="img">
-                        <p class="artist-name">Daddy Yankee</p>
-                    </a>
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
-
-            <h3 class="letter">E</h3>
-            <div class="row">
-                <div class="col">
-                    <a href="" class="link">
-                        <img src="assets/artist-art/Ed_Sheeran.jpg" class="img">
-                        <p class="artist-name">Ed Sheeran</p>
-                    </a>
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
-                <div class="col">
-
-                </div>
+            <?php
+                $con = DBConnector::getConnection();
+                foreach(range('a','z') as $letter){
+                    ?>                  
+                    <?php
+                    $query = "SELECT artist_id, artist_name, profile_pic_url FROM artist WHERE artist_name LIKE '".$letter."%'";
+                    $result = $con->query($query);
+                    if ($result->rowCount() > 0) {
+                        ?>
+                        <h3 class="letter" id="<?php echo ucfirst($letter); ?>"><?php echo ucfirst($letter); ?></h3>
+                        <?php
+                        while($row = $result->fetch(PDO::FETCH_NUM)) {
+                        ?>
+                            <div class="col">
+                                <a href="user-artist-profile.php?artist_id=<?php echo $row[0] ?>" class="link">
+                                    <img src="<?php echo "./".$row[2] ?>" class="img">
+                                    <p class="artist-name"><?php echo $row[1] ?></p>
+                                </a>
+                            </div>
+                        <?php
+                        }
+                    }                  
+                }
+            ?>
             </div>
         </div>
     </div>
