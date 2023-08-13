@@ -38,7 +38,8 @@ function playSong(track_name, artist_name, album_art, profile_pic, audio_path, l
     playPauseTrack();
 }
 
-function playCollection(album_id){
+function playAlbum(album_id){
+    track_list = [];
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
@@ -54,7 +55,6 @@ function playCollection(album_id){
                         lyrics: "./"+obj[i][5]
                     };
                 track_list.push(array);
-                console.log(obj[i]);
             }
             
             loadTrack(track_index);
@@ -62,6 +62,32 @@ function playCollection(album_id){
         }
     }
     xhr.open("GET", "./scripts/process-album.php?now_playing_album="+album_id);
+    xhr.send();
+}
+
+function playRandom(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var obj = JSON.parse(this.responseText);
+
+            for(i=0; i<obj.length; i++){
+                    var array = {
+                        name: obj[i][0],
+                        artist: obj[i][1],
+                        image: "./"+obj[i][2],
+                        artistArt: "./"+obj[i][3],
+                        path: "./"+obj[i][4],
+                        lyrics: "./"+obj[i][5]
+                    };
+                track_list.push(array);
+            }
+            
+            loadTrack(track_index);
+            playPauseTrack();
+        }
+    }
+    xhr.open("GET", "./scripts/process-song.php?play_rand=1");
     xhr.send();
 }
 

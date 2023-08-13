@@ -178,4 +178,20 @@ class Song{
             die($e->getMessage());
         }  
     }
+
+    public function playRandom(){
+        try{
+            $query = "SELECT song_name, artist.artist_name, album.thumbnail_url, artist.profile_pic_url, audio, lyrics 
+                FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id 
+                ORDER BY RAND() LIMIT 3";
+            $con = DBConnector::getConnection();
+            $pstmt = $con->prepare($query);
+            $pstmt->execute();
+            $result = $pstmt->fetchAll();
+            return $result;
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
 }

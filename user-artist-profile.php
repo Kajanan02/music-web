@@ -177,7 +177,7 @@
                         
                         <div class="item">
                             <img src="<?php echo $row[3]?>" />
-                            <div class="play" onclick="playCollection(<?php echo $row[0]?>)">
+                            <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
                                 <span class="fa fa-play"></span>
                             </div>
                             <h4><?php echo $row[1]?></h4>
