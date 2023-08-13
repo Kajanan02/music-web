@@ -150,3 +150,11 @@ if(isset($_POST["deleteSong"])){
     $song->setSongID($song_id);
     $song->deleteSong();
 }
+
+if(isset($_REQUEST["play_rand"])){
+    $song = new Song("","","","","","");
+    $row = $song->playRandom();
+
+    $json = json_encode($row);
+    echo $json;
+}

@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar nav-dashboard  bg-dark shadow">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 px-5 text-white"> <a href="index.html"> <img src="assets/logo-transparent.png" alt="Logo" width="200px" /></a></span>
+            <span class="navbar-brand mb-0 h1 px-5 text-white"> <a href="index.php"> <img src="assets/logo-transparent.png" alt="Logo" width="200px" /></a></span>
         </div>
     </nav>
 

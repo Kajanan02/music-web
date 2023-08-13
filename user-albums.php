@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
 ?>
 
 <!DOCTYPE html>
@@ -75,168 +78,81 @@
         <div class="melomaniac-playlists">
             <h2>Top Albums of the Week</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="setTrackIndex(0)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4>Divide</h4>
-                            <p>Ed Sheeran</p>
+                <?php
+                $con = DBConnector::getConnection();
+
+                $query1 = "SELECT * FROM album WHERE artist_id IN (SELECT artist_id FROM artist ORDER BY RAND()) LIMIT 3";
+                $pstmt1 = $con->prepare($query1);
+                $pstmt1->execute();
+                $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
+
+                foreach($rows3 as $row){
+                    ?>
+                    
+                    <div class="item">
+                        <img src="<?php echo $row[3]?>" />
+                        <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                            <span class="fa fa-play"></span>
                         </div>
-                        <img src="assets/heart.svg" class="favourite">
+                        <h4><?php echo $row[1]?></h4>
+                        <p><?php echo "Released On: " .$row[2]?></p>
                     </div>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Daddy-K-The-Mix-12.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4>Daddy K - The</h4>
-                            <p>Daddy Yankee</p>
-                        </div>
-                        <img src="assets/heart.svg" class="favourite">
-                    </div>
-
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Guru.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4>Guru</h4>
-                            <p>A.R Rahman</p>
-                        </div>
-                        <img src="assets/heart.svg" class="favourite">
-                    </div>
-
-
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Fate of the Furious</h4>
-                    <p>Fast and Furious 8 - Soundtrack</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Prism.jpg" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Prism</h4>
-                    <p>Katy Perry</p>
-                </div>
-            </div>
+                    <?php
+                }
+                ?>
+            </div> 
 
             <h2>Most Streamed Albums All Time</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Divide</h4>
-                    <p>Ed Sheeran</p>
-                </div>
+                <?php
+                $con = DBConnector::getConnection();
 
-                <div class="item">
-                    <img src="assets/album-art/Daddy-K-The-Mix-12.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Daddy K - The Mix 12</h4>
-                    <p>Daddy Yankee</p>
-                </div>
+                $query1 = "SELECT * FROM album WHERE artist_id IN (SELECT artist_id FROM artist ORDER BY release_date) ORDER BY RAND() LIMIT 4";
+                $pstmt1 = $con->prepare($query1);
+                $pstmt1->execute();
+                $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+                foreach($rows3 as $row){
+                    ?>                  
+                    <div class="item">
+                        <img src="<?php echo $row[3]?>" />
+                        <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4><?php echo $row[1]?></h4>
+                        <p><?php echo "Released On: " .$row[2]?></p>
                     </div>
-                    <h4>Fate of the Furious</h4>
-                    <p>Fast and Furious 8 - Soundtrack</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Prism.jpg" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Prism</h4>
-                    <p>Katy Perry</p>
-                </div>
-            </div>
+                    <?php
+                }
+                ?>
+            </div> 
 
             <h2>Most Favorited Albums</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Prism.jpg" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Prism</h4>
-                    <p>Katy Perry</p>
-                </div>
+                <?php
+                $con = DBConnector::getConnection();
 
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Fate of the Furious</h4>
-                    <p>Fast and Furious 8 - Soundtrack</p>
-                </div>
+                $query1 = "SELECT * FROM album WHERE artist_id IN (SELECT artist_id FROM artist) ORDER BY release_date DESC LIMIT 5";
+                $pstmt1 = $con->prepare($query1);
+                $pstmt1->execute();
+                $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
-                <div class="item">
-                    <img src="assets/album-art/3.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+                foreach($rows3 as $row){
+                    ?>
+                    
+                    <div class="item">
+                        <img src="<?php echo $row[3]?>" />
+                        <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4><?php echo $row[1]?></h4>
+                        <p><?php echo "Released On: " .$row[2]?></p>
                     </div>
-                    <h4>#3</h4>
-                    <p>The Script</p>
-                </div>
-            </div>
+                    <?php
+                }
+                ?>
+            </div> 
 
-            <h2>Top Personal</h2>
-            <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Jai-Ho.jpeg" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Jai-Ho</h4>
-                    <p>A.R Rahman</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Fate of the Furious</h4>
-                    <p>Fast and Furious 8 - Soundtrack</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Sangamam.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Sangamam</h4>
-                    <p>A.R Rahman</p>
-                </div>
-            </div>
             <div style="margin-bottom: 180px;"></div>
         </div>
     </div>

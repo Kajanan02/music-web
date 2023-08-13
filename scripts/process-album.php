@@ -93,3 +93,12 @@ if(isset($_POST["deleteAlbum"])){
     $album->setAlbumID($selected_album_id);
     $album->deleteAlbum();
 }
+
+if(isset($_REQUEST["now_playing_album"])){
+    $album_id = $_REQUEST["now_playing_album"];
+    $album = new Album("", "", "");
+    $row = $album->sendNowPlayingAlbumInfo($album_id);
+    
+    $json = json_encode($row);
+    echo $json;
+}

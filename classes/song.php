@@ -178,4 +178,55 @@ class Song{
             die($e->getMessage());
         }  
     }
+
+    public function playRandom(){
+        try{
+            $query = "SELECT song_name, artist.artist_name, album.thumbnail_url, artist.profile_pic_url, audio, lyrics 
+                FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id 
+                ORDER BY RAND() LIMIT 3";
+            $con = DBConnector::getConnection();
+            $pstmt = $con->prepare($query);
+            $pstmt->execute();
+            $result = $pstmt->fetchAll();
+            return $result;
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function addToPlaylist($listener_id, $song_id, $playlist_name,){
+        try{
+            $query = "INSERT INTO playlist(listener_id, song_id, playlist_name) VALUES(?, ?, ?)";
+            $con = DBConnector::getConnection();
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $listener_id);
+            $pstmt->bindValue(2, $song_id);
+            $pstmt->bindValue(3, $playlist_name);
+            $a = $pstmt->execute();
+            if($a > 0){
+                header("Location: ../user-playlists.php?error=0");
+            }
+            else{
+                header("Location: ../user-playlists.php?error=2");
+            }
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    function getSongsInPlaylist($listener_id, $playlist_name){
+        $con = DBConnector::getConnection();
+
+        $query4 = "SELECT DISTINCT song_name, artist.artist_name, album.thumbnail_url, artist.profile_pic_url, audio, lyrics FROM song, artist, playlist, album  
+            WHERE song.album_id = album.album_id AND song.artist_id = artist.artist_id AND playlist.song_id = song.song_id AND playlist.listener_id=? AND playlist.playlist_name=?";
+
+        $pstmt4 = $con->prepare($query4);
+        $pstmt4->bindValue(1, $listener_id);
+        $pstmt4->bindValue(2, $playlist_name);
+        $pstmt4->execute();
+        $songs = $pstmt4->fetchAll();
+        return $songs;
+    }
 }

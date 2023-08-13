@@ -55,8 +55,8 @@
 
     <div class="row">
         <div class="col-md-12 mb-5 d-flex justify-content-center">
-            <img src="" name="cover_picture" id="cover_picture" class="img-fluid z-index-n1" width="600"/>
-            <img src="" name="profile_picture" id="profile_picture" class="profile_picture z-index-2 img-thmubnail"/>
+            <img src="" name="cover_picture" id="cover_picture" class="img-fluid cover_picture" width="800"/>
+            <img src="" name="profile_picture" id="profile_picture" class="profile_picture img-thmubnail"/>
         </div>
     </div>
 
@@ -406,7 +406,7 @@
             <div class="mb-3">
                 <label for="artist-bio" class="form-label text-white">Description</label>
                 <textarea rows="10" cols="10" name="artist-bio" class="form-control bg-dark text-white place-holder"
-                          placeholder="STORED bio IN DB" id="artist-bio">
+                          placeholder="Indicate line breaks with <br>" id="artist-bio">
                 </textarea>
             </div>
 

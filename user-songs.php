@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
 ?>
 
 <!DOCTYPE html>
@@ -70,156 +73,118 @@
             </nav>
         </div>
     </div>
+
     <div class="main-container">
-        <div class="melomaniac-playlists">
+        <?php
+        $con = DBConnector::getConnection();
+        $query2 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+            FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id ORDER BY RAND() LIMIT 3";
+
+        $pstmt2 = $con->prepare($query2);
+        $pstmt2->execute();
+        $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+        ?>
+        <div class="row melomaniac-playlists">
             <h2>Top Songs of the Week</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="setTrackIndex(1)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Perfect</h4>
-                    <p>Ed Sheeran</p>
-                </div>
+                <?php
+                foreach($rows2 as $row){
+                    ?>
+                    <div class="item">
+                        <img src="<?php echo $row[2] ?>" />
+                        <div class="play" onclick="playSong(
+                            '<?php echo $row[0] ?>', 
+                            '<?php echo $row[3] ?>', 
+                            '<?php echo './'.$row[2] ?>', 
+                            '<?php echo './'.$row[4] ?>', 
+                            '<?php echo './'.$row[5] ?>', 
+                            '<?php echo './'.$row[6] ?>')">
 
-                <div class="item">
-                    <img src="assets/album-art/Daddy-K-The-Mix-12.jpg" />
-                    <div class="play" onclick="setTrackIndex(2)">
-                        <span class="fa fa-play"></span>
+                            <span class="fa fa-play play"></span>
+                        </div>
+                        <h4><?php echo $row[0] ?></h4>
+                        <p>From <?php echo $row[1] ?></p>
                     </div>
-                    <h4>Dura</h4>
-                    <p>Daddy Yankee</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Guru.jpg" />
-                    <div class="play" onclick="setTrackIndex(6)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Aaruyirae</h4>
-                    <p>A.R Rahman</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/audio.jpeg" />
-                    <div class="play" onclick="setTrackIndex(7)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Bekhayali</h4>
-                    <p>Kabir Singh</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Prism.jpg" />
-                    <div class="play" onclick="setTrackIndex(5)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Unconditionally</h4>
-                    <p>Katy Perry</p>
-                </div>
+                    <?php
+                }
+                ?>
             </div>
+        </div>
 
+        <?php
+        $con = DBConnector::getConnection();
+        $query2 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+            FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id ORDER BY album.release_date LIMIT 4";
+
+        $pstmt2 = $con->prepare($query2);
+        $pstmt2->execute();
+        $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+        ?>
+        <div class="row melomaniac-playlists">
             <h2>Most Streamed Songs All Time</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="setTrackIndex(0)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Castle on the Hill</h4>
-                    <p>Ed Sheeran</p>
-                </div>
+                <?php
+                foreach($rows2 as $row){
+                    ?>
+                    <div class="item">
+                        <img src="<?php echo $row[2] ?>" />
+                        <div class="play" onclick="playSong(
+                            '<?php echo $row[0] ?>', 
+                            '<?php echo $row[3] ?>', 
+                            '<?php echo './'.$row[2] ?>', 
+                            '<?php echo './'.$row[4] ?>', 
+                            '<?php echo './'.$row[5] ?>', 
+                            '<?php echo './'.$row[6] ?>')">
 
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play" onclick="setTrackIndex(3)">
-                        <span class="fa fa-play"></span>
+                            <span class="fa fa-play play"></span>
+                        </div>
+                        <h4><?php echo $row[0] ?></h4>
+                        <p>From <?php echo $row[1] ?></p>
                     </div>
-                    <h4>Goodlife</h4>
-                    <p>Kehlani ft. G-Eazy</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Daddy-K-The-Mix-12.jpg" />
-                    <div class="play" onclick="setTrackIndex(2)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Dura</h4>
-                    <p>Daddy Yankee</p>
-                </div>
+                    <?php
+                }
+                ?>
             </div>
+        </div>
+    
+        <?php
+        $con = DBConnector::getConnection();
+        $query2 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+            FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id ORDER BY RAND(artist.artist_name) LIMIT 5";
 
+        $pstmt2 = $con->prepare($query2);
+        $pstmt2->execute();
+        $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+        ?>
+        <div class="row melomaniac-playlists">
             <h2>Melomaniac Favorites</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Prism.jpg" />
-                    <div class="play" onclick="setTrackIndex(5)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Unconditionally</h4>
-                    <p>Katy Perry</p>
-                </div>
+                <?php
+                foreach($rows2 as $row){
+                    ?>
+                    <div class="item">
+                        <img src="<?php echo $row[2] ?>" />
+                        <div class="play" onclick="playSong(
+                            '<?php echo $row[0] ?>', 
+                            '<?php echo $row[3] ?>', 
+                            '<?php echo './'.$row[2] ?>', 
+                            '<?php echo './'.$row[4] ?>', 
+                            '<?php echo './'.$row[5] ?>', 
+                            '<?php echo './'.$row[6] ?>')">
 
-                <div class="item">
-                    <img src="assets/album-art/audio.jpeg" />
-                    <div class="play" onclick="setTrackIndex(7)">
-                        <span class="fa fa-play"></span>
+                            <span class="fa fa-play play"></span>
+                        </div>
+                        <h4><?php echo $row[0] ?></h4>
+                        <p>From <?php echo $row[1] ?></p>
                     </div>
-                    <h4>Bekhayali</h4>
-                    <p>Kabir Singh</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/3.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play" onclick="setTrackIndex(4)"></span>
-                    </div>
-                    <h4>#3</h4>
-                    <p>The Script</p>
-                </div>
+                    <?php
+                }
+                ?>
             </div>
-
-            <h2>Personal Favorites</h2>
-            <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Jai-Ho.jpeg" />
-                    <div class="play" onclick="">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Jai-Ho</h4>
-                    <p>A.R Rahman</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/The_Fate_of_the_Furious_The_Album.jpg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Fate of the Furious</h4>
-                    <p>Fast and Furious 8 - Soundtrack</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Sangamam.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Sangamam</h4>
-                    <p>A.R Rahman</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="setTrackIndex(1)">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Perfect</h4>
-                    <p>Ed Sheeran</p>
-                </div>
-            </div>
-            <div style="margin-bottom: 180px;"></div>
         </div>
+
+        <div style="margin-bottom: 180px;"></div>
+
     </div>
 
     <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>

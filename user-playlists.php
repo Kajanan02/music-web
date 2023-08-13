@@ -1,5 +1,12 @@
 <?php
-session_start();
+    session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
+
+    if(!isset($_SESSION["listener_id"])){
+        header("Location: user-login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -76,25 +83,62 @@ session_start();
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create playlist</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Playlist</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="exampleFormControlInput1" class="form-label text-dark">Playlist Name</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Playlist Name">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="exampleFormControlInput3" class="form-label text-dark">Song</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="Song">
-                        </div>
+
+                <form method="POST" action="./scripts/process-playlist.php">
+                    <div class="modal-body">
+                        <input type="hidden" name="listener_id" value="<?php echo $_SESSION["listener_id"] ?>"/>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"> 
+                                <?php
+                                    $con = DBConnector::getConnection();
+                                    $query1 = "SELECT DISTINCT playlist_name FROM playlist WHERE listener_id=?";
+                                    $pstmt1 = $con->prepare($query1);
+                                    $pstmt1->bindValue(1, $_SESSION["listener_id"]);
+                                    $pstmt1->execute();
+                                    $result1 = $pstmt1->fetchAll(PDO::FETCH_NUM);
+                                ?>     
+
+                                <label for="playlist_name" class="form-label text-dark">Playlist Name</label>
+                                <input list="playlists" name="playlist_name" id="playlist_name" class="form-control" placeholder="Playlist Name">
+                                <datalist id="playlists">
+                                    <?php
+                                        foreach($result1 as $r){
+                                            ?>
+                                            <option value="<?php echo $r[0] ?>"></option>
+                                            <?php
+                                        }
+                                    ?>
+                                </datalist>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="song" class="form-label text-dark">Song</label>
+
+                                <?php
+                                    $query2 = "SELECT song.song_id, song.song_name, artist.artist_name FROM song, artist WHERE song.artist_id = artist.artist_id";
+                                    $pstmt2 = $con->prepare($query2);
+                                    $pstmt2->execute();
+                                    $result2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+                                ?>
+                                <select name="song" id="song" class="form-control">
+                                    <?php
+                                        foreach($result2 as $r){
+                                            ?>
+                                            <option value="<?php echo $r[0]?>"><?php echo $r[1] . " by " . $r[2]?></option>
+                                            <?php
+                                        }
+                                    ?>
+                                </select>   
+                            </div>
+                        </div>                       
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" name="save" value="Save"/>
+                    </div>
+                </form> 
             </div>
         </div>
     </div>
@@ -105,90 +149,26 @@ session_start();
         <div class="melomaniac-playlists">
             <h2>My Playlists</h2>
             <div class="list">
-                <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="playPauseTrack()">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Favorites</h4>
-                    <p>My Favorites</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/study.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Study</h4>
-                    <p>Study Music</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/focus.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Focus</h4>
-                    <p>Work Music</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/party.png" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Party</h4>
-                    <p>PARTY!</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/instrumental.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Instrumental</h4>
-                    <p>Instrumental</p>
-                </div>
-            </div>
-
-            <br><br>
-
-            <div class="list">
-                <div class="item">
-                    <img src="assets/playlists/love.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Love Songs</h4>
-                    <p>Love</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/mood.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Mood</h4>
-                    <p>Sad Music</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/old.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Old</h4>
-                    <p>The Legends</p>
-                </div>
-
-                <div class="item">
-                    <img src="assets/playlists/temp.jpeg" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Temp</h4>
-                    <p>Not yet favorite</p>
-                </div>
+                <?php
+                    $query3 = "SELECT DISTINCT playlist_name, COUNT(playlist_name) FROM playlist WHERE listener_id=? GROUP BY playlist_name";
+                    $pstmt3 = $con->prepare($query3);
+                    $pstmt3->bindValue(1, $_SESSION["listener_id"]);
+                    $pstmt3->execute();
+                    $result = $pstmt3->fetchAll(PDO::FETCH_BOTH);
+                    
+                    foreach($result as $r){
+                        ?>
+                        <div class="item">
+                            <img src="./assets/playlists/old.jpeg" />
+                            <div class="play" onclick="playPlaylist('<?php echo $_SESSION['listener_id']?>','<?php echo $r['playlist_name'] ?>')">
+                                <span class="fa fa-play"></span>
+                            </div>
+                            <h4><?php echo $r["playlist_name"] ?></h4>
+                            <p><?php echo  $r[1] ." Songs" ?></p>
+                        </div>
+                        <?php
+                    }
+                ?>
             </div>
 
             <div style="margin-bottom: 180px;"></div>

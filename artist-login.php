@@ -84,11 +84,11 @@
                                 <a class="text-white ms-1 text-white mt-5" href="artist-register.php">Not registered?</a>
                             </div>
                         </div>      
-                        <div class="col">
+                        <!--div class="col">
                             <div class="d-flex justify-content-end">
                                 <a class="text-white ms-1 text-white mt-5" href="">Forgot Password?</a>
                             </div>
-                        </div>
+                        </div-->
                     </div>
                 </form>
 

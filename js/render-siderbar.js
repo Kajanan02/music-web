@@ -2,7 +2,7 @@ const sidebar = document.createElement("template");
 sidebar.innerHTML = `
     <div class="sidebar" id="slide-bar">
         <div class="logo">
-            <a href="#">
+            <a href="index.php">
                 <img src="assets/logos/melomaniac.png" alt="Logo" />
             </a>
         </div>

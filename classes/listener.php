@@ -22,6 +22,10 @@ class Listener{
     private $card_number;
     private $expiry_date;
 
+    public function setListenerID($listener_id) {
+        $this->listener_id = $listener_id;
+    }
+
     // Class constructor cannot be used as getAvailableUsernames() is executed before addListener()
     public function setFirstname($firstname){
         $this->firstname = $firstname;
@@ -93,6 +97,44 @@ class Listener{
         }
         catch(Exception $e){
             echo $e->getMessage();
+        }
+    }
+
+    public function changePassword($enteredPassword, $newpassword) {
+        try {
+            $con = DBConnector::getConnection();
+
+            // Select the current password for the listener
+            $selectQuery = "SELECT password FROM listener WHERE listener_id = ?";
+            $selectStmt = $con->prepare($selectQuery);
+            $selectStmt->bindValue(1, $this->listener_id);
+            $selectStmt->execute();
+            $row = $selectStmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                $storedPassword = $row['password'];
+
+                if (password_verify($enteredPassword, $storedPassword)) {
+
+                    $updateQuery = "UPDATE listener SET password=? WHERE listener_id=?";
+                    $updateStmt = $con->prepare($updateQuery);
+                    $updateStmt->bindValue(1, password_hash($newpassword, PASSWORD_BCRYPT));
+                    $updateStmt->bindValue(2, $this->listener_id);
+                    $a = $updateStmt->execute();
+
+                    if ($a > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return 8;
+                }
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
     }
 }

@@ -94,9 +94,9 @@
                     </form>
 
                     <div class="row d-flex mt-5">
-                        <div class="col justify-content-start">
+                        <!--div class="col justify-content-start">
                                 <p><a href="" class="text-light">Forgot Password?</a></p>
-                        </div>
+                        </div-->
                         <div class="col ms-auto text-end">
                             <p><a href="user-signup.php" class="text-light">Not registered?</a></p>
                         </div>

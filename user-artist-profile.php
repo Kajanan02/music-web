@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
 ?>
 
 <!DOCTYPE html>
@@ -73,18 +76,30 @@
         </div>
     </div>
 
+    <?php
+        $artist_id = $_GET["artist_id"];
+        $con = DBConnector::getConnection();
+        $query = "SELECT artist_name, artist_description, city, country, profile_pic_url, cover_pic_url FROM artist WHERE artist_id=?";
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $artist_id);
+        $pstmt->execute();
+        $row = $pstmt->fetch(PDO::FETCH_NUM);
+    ?>
+    <input type="hidden" id="profile_pic" value="<?php echo $row[4] ?>"/>
+    <input type="hidden" id="artist_name" value="<?php echo $row[0] ?>"/>
+
     <div class="main-container">
         <div class="container-fluid">
             <div class="cover position-relative">
                 <div class="">
-                    <div class="artist-header">
+                    <div class="artist-header" style="background-image: url(<?php echo "./".$row[5] ?>)">
                         <div class="d-flex justify-content-center">
                             <div class=" mobile-hide">
-                                <img src="assets/artist-art/A.R.Rahman.jpeg" class="col-4 align-self-start img-thumbnail profile-picture">
+                                <img src="<?php echo "./".$row[4] ?>" class="col-4 align-self-start img-thumbnail profile-picture">
                             </div>
                             <div class="">
-                                <h4 class="display-2 title">A.R Rahman</h4>
-                                <h5 class="subtitle"> New Delhi - India</h5>
+                                <h4 class="display-2 title"><?php echo $row[0] ?></h4>
+                                <h5 class="subtitle"> <?php echo $row[2]. " - ". $row[3] ?></h5>
                             </div>
                         </div>
                         <div>
@@ -97,78 +112,70 @@
             <div class="">
                 <div class=" bio">
                     <p class="lead">
-                        A.R. Rahman is an iconic Indian composer, singer, and music producer, widely regarded
-                        as one of the greatest music maestros in the Indian film industry. Born on January 6, 1967,
-                        in Chennai, India, Rahman's birth name is A. S. Dileep Kumar. He is renowned for his diverse
-                        musical talent and ability to fuse various genres and cultural influences into his compositions.
-                        <br>
-                        Rahman gained international recognition with his groundbreaking soundtrack for the film "Roja"
-                        in 1992, which marked his entry into the Indian film industry. Since then, he has composed
-                        music for numerous critically acclaimed and commercially successful movies, earning him
-                        widespread acclaim and numerous prestigious awards, including two Academy Awards, two Grammy
-                        Awards, and a BAFTA Award.
+                        <?php echo $row[1] ?>
                     </p>
                 </div>
             </div>
+
+            <?php
+                $query2 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+                    FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id AND 
+                    song.artist_id = ? LIMIT 5";
+
+                $pstmt2 = $con->prepare($query2);
+                $pstmt2->bindValue(1, $artist_id);
+                $pstmt2->execute();
+                $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+            ?>
             <div class="row melomaniac-playlists">
                 <h2>Top Songs</h2>
                 <div class="list">
-                    <div class="item">
-                        <img src="assets/album-art/Guru.jpg" />
-                        <div class="play" onclick="setTrackIndex(6)">
-                            <span class="fa fa-play"></span>
-                        </div>
-                        <h4>Aaruyiae</h4>
-                        <p>From Guru Soundtrack</p>
-                    </div>
+                    <?php
+                    foreach($rows2 as $row){
+                        ?>
+                        <div class="item">
+                            <img src="<?php echo $row[2] ?>" />
+                            <div class="play" onclick="playSong(
+                                '<?php echo $row[0] ?>', 
+                                '<?php echo $row[3] ?>', 
+                                '<?php echo './'.$row[2] ?>', 
+                                '<?php echo './'.$row[4] ?>', 
+                                '<?php echo './'.$row[5] ?>', 
+                                '<?php echo './'.$row[6] ?>')">
 
-                    <div class="item">
-                        <img src="assets/album-art/Sangamam.jpeg" />
-                        <div class="play">
-                            <span class="fa fa-play"></span>
+                                <span class="fa fa-play play"></span>
+                            </div>
+                            <h4><?php echo $row[0] ?></h4>
+                            <p>From <?php echo $row[1] ?></p>
                         </div>
-                        <h4>Varaha Nadhikarai</h4>
-                        <p>From Sangamam</p>
-                    </div>
-
-                    <div class="item">
-                        <img src="assets/album-art/Jai-Ho.jpeg" />
-                        <div class="play">
-                            <span class="fa fa-play"></span>
-                        </div>
-                        <h4>Jai-Ho</h4>
-                        <p>From Jai-Ho Soundtrack</p>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
 
+                <?php
+                    $query3 = "SELECT * FROM album WHERE artist_id=? LIMIT 5";
+                    $pstmt3 = $con->prepare($query3);
+                    $pstmt3->bindValue(1, $artist_id);
+                    $pstmt3->execute();
+                    $rows3 = $pstmt3->fetchAll(PDO::FETCH_NUM);
+                ?>
                 <h2>Top Albums</h2>
                 <div class="list">
-                    <div class="item">
-                        <img src="assets/album-art/Guru.jpg" />
-                        <div class="play">
-                            <span class="fa fa-play"></span>
+                    <?php
+                    foreach($rows3 as $row){
+                        ?>      
+                        <div class="item">
+                            <img src="<?php echo $row[3]?>" />
+                            <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                                <span class="fa fa-play"></span>
+                            </div>
+                            <h4><?php echo $row[1]?></h4>
+                            <p><?php echo "Released On: " .$row[2]?></p>
                         </div>
-                        <h4>Guru</h4>
-                        <p>Soundtrack from original motion pricture Guru 2007</p>
-                    </div>
-
-                    <div class="item">
-                        <img src="assets/album-art/Sangamam.jpeg" />
-                        <div class="play">
-                            <span class="fa fa-play"></span>
-                        </div>
-                        <h4>Sangamam</h4>
-                        <p>Soundtrack from original motion pricture Sangamam 1999</p>
-                    </div>
-
-                    <div class="item">
-                        <img src="assets/album-art/Jai-Ho.jpeg" />
-                        <div class="play">
-                            <span class="fa fa-play"></span>
-                        </div>
-                        <h4>Jai-Ho</h4>
-                        <p>Soundtrack from original motion pricture Jai-Jo 2014</p>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <div style="margin-bottom: 180px;"></div>
             </div>

@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once "./classes/db-connector.php";
+    use classes\DBConnector;
 ?>
 
 <!DOCTYPE html>
@@ -77,235 +80,172 @@
 
             <div class="list">
                 <div class="item">
-                    <img src="assets/album-art/Divide.png" />
-                    <div class="play" onclick="playPauseTrack()">
+                    <img src="assets/playlists/focus.jpeg" />
+                    <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
-                    <h4>Old Memories</h4>
-                    <p>Remembering the memories of a lifetime</p>
+                    <h4>Good Times</h4>
+                    <p>Don't search for music, Search for memories</p>
                 </div>
 
                 <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
+                    <img src="assets/playlists/party.png" />
+                    <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
-                    <h4>RapCaviar</h4>
-                    <p>New Music from Lil Baby, Juice WRLD an...</p>
+                    <h4>Random</h4>
+                    <p>You didn't plan it? Did you?</p>
                 </div>
 
                 <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
+                    <img src="assets/playlists/love.jpeg" />
+                    <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
-                    <h4>All out 2010s</h4>
-                    <p>The biggest spmgs pf tje 2010s. Cover:...</p>
+                    <h4>Memories</h4>
+                    <p>Reflect on your soul</p>
                 </div>
 
                 <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
+                    <img src="assets/playlists/mood.jpeg" />
+                    <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
-                    <h4>Rock Classics</h4>
-                    <p>Rock Legends & epic songs that continue t...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Chill Hits</h4>
-                    <p>Kick back to the best new and recent chill...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Viva Latino</h4>
-                    <p>Today's top Latin hits elevando nuestra...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Mega Hit Mix</h4>
-                    <p>A mega mix of 75 favorites from the last...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>All out 80s</h4>
-                    <p>The biggest songs of the 1090s.</p>
+                    <h4>Favorites</h4>
+                    <p>Everytime favorites</p>
                 </div>
             </div>
         </div>
 
         <div class="melomaniac-playlists">
-            <h2>Focus</h2>
+            <h2>From Ed Sheeran</h2>
             <div class="list">
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Peaceful Piano</h4>
-                    <p>Relax and indulge with beautiful piano pieces</p>
-                </div>
+                <?php
+                $con = DBConnector::getConnection();
+                $query1 = "SELECT * FROM album WHERE artist_id=? LIMIT 5";
+                $pstmt1 = $con->prepare($query1);
+                $pstmt1->bindValue(1, "1");
+                $pstmt1->execute();
+                $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+                foreach($rows3 as $row){
+                    ?>                  
+                    <div class="item">
+                        <img src="<?php echo $row[3]?>" />
+                        <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4><?php echo $row[1]?></h4>
+                        <p><?php echo "Released On: " .$row[2]?></p>
                     </div>
-                    <h4>Deep Focus</h4>
-                    <p>Keep calm and focus with ambient and pos...</p>
-                </div>
+                    <?php
+                }
+                ?>
+            </div> 
+            
+            <div class="list">
+                <?php
+                    $query3 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+                    FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id AND 
+                    song.artist_id = ? LIMIT 5";
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Instrumental Study</h4>
-                    <p>Focus with soft study music in the...</p>
-                </div>
+                    $pstmt3 = $con->prepare($query3);
+                    $pstmt3->bindValue(1, "1");
+                    $pstmt3->execute();
+                    $rows2 = $pstmt3->fetchAll(PDO::FETCH_NUM);
+                ?>
+                <div class="list">
+                    <?php
+                    foreach($rows2 as $row){
+                        ?>
+                        <div class="item">
+                            <img src="<?php echo $row[2] ?>" />
+                            <div class="play" onclick="playSong(
+                                '<?php echo $row[0] ?>', 
+                                '<?php echo $row[3] ?>', 
+                                '<?php echo './'.$row[2] ?>', 
+                                '<?php echo './'.$row[4] ?>', 
+                                '<?php echo './'.$row[5] ?>', 
+                                '<?php echo './'.$row[6] ?>')">
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>chill lofi study beats</h4>
-                    <p>The perfect study beats, twenty four...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Coding Mode</h4>
-                    <p>Dedicated to all the programmers out there.</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Focus Flow</h4>
-                    <p>Uptempo instrumental hip hop beats.</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Calm Before The Storm</h4>
-                    <p>Calm before the storm music.</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Beats to think to</h4>
-                    <p>Focus with deep techno and tech house.</p>
+                                <span class="fa fa-play play"></span>
+                            </div>
+                            <h4><?php echo $row[0] ?></h4>
+                            <p>From <?php echo $row[1] ?></p>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
 
-        <div class="melomaniac-playlists">
-            <h2>Mood</h2>
+        <div class="melomaniac-playlists mb-5">
+            <h2>From Imagine Dragons</h2>
             <div class="list">
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Mood Booster</h4>
-                    <p>Get happy with today's dose of feel-good...</p>
-                </div>
+                <?php
+                $con = DBConnector::getConnection();
+                $query4 = "SELECT * FROM album WHERE artist_id=? LIMIT 5";
+                $pstmt4 = $con->prepare($query4);
+                $pstmt4->bindValue(1, "5");
+                $pstmt4->execute();
+                $rows3 = $pstmt4->fetchAll(PDO::FETCH_NUM);
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+                foreach($rows3 as $row){
+                    ?>
+                    
+                    <div class="item">
+                        <img src="<?php echo $row[3]?>" />
+                        <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4><?php echo $row[1]?></h4>
+                        <p><?php echo "Released On: " .$row[2]?></p>
                     </div>
-                    <h4>Feelin' Good</h4>
-                    <p>Feel good with this positively timeless...</p>
-                </div>
+                    <?php
+                }
+                ?>
+            </div> 
+            
+            <div class="list">
+                <?php
+                    $query2 = "SELECT song_name, album.album_name, album.thumbnail_url, artist.artist_name, artist.profile_pic_url, audio, lyrics 
+                    FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id AND 
+                    song.artist_id = ? LIMIT 5";
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Dark & Stormy</h4>
-                    <p>Beautifully dark, dramatic tracks.</p>
-                </div>
+                    $pstmt2 = $con->prepare($query2);
+                    $pstmt2->bindValue(1, "5");
+                    $pstmt2->execute();
+                    $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
+                ?>
+                <div class="list">
+                    <?php
+                    foreach($rows2 as $row){
+                        ?>
+                        <div class="item">
+                            <img src="<?php echo $row[2] ?>" />
+                            <div class="play" onclick="playSong(
+                                '<?php echo $row[0] ?>', 
+                                '<?php echo $row[3] ?>', 
+                                '<?php echo './'.$row[2] ?>', 
+                                '<?php echo './'.$row[4] ?>', 
+                                '<?php echo './'.$row[5] ?>', 
+                                '<?php echo './'.$row[6] ?>')">
 
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Feel Good Piano</h4>
-                    <p>Happy vibes for an upbeat morning.</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Feelin' Myself</h4>
-                    <p>The hip-hop playlist that's a whole mood...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Chill Tracks</h4>
-                    <p>Softer kinda dance</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>Feel-Good Indie Rock</h4>
-                    <p>The best indie rock vibes - classic and...</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>idk.</h4>
-                    <p>idk.</p>
+                                <span class="fa fa-play play"></span>
+                            </div>
+                            <h4><?php echo $row[0] ?></h4>
+                            <p>From <?php echo $row[1] ?></p>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
-            <div style="margin-bottom: 180px;"></div>
-            <hr>
         </div>
-    </div>
+
+        <div style="margin-bottom: 180px;"></div>
+        <hr>
 
     <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
 
