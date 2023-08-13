@@ -55,8 +55,8 @@
 
     <div class="row">
         <div class="col-md-12 mb-5 d-flex justify-content-center">
-            <img src="" name="cover_picture" id="cover_picture" class="img-fluid z-index-n1" width="600"/>
-            <img src="" name="profile_picture" id="profile_picture" class="profile_picture z-index-2 img-thmubnail"/>
+            <img src="" name="cover_picture" id="cover_picture" class="img-fluid cover_picture" width="800"/>
+            <img src="" name="profile_picture" id="profile_picture" class="profile_picture img-thmubnail"/>
         </div>
     </div>
 
