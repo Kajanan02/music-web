@@ -334,9 +334,6 @@ body {
     track-info-container-sub{
         flex-direction: row !important;
     }
-    .track-info-container-main{
-
-    }
 }
 @media (max-width: 500px) {
     .nav-dashboard {
@@ -350,20 +347,25 @@ body {
     background-color: #61666f !important;
 }
 
-
-
 .profile_picture{
     width: 135px;
     height: 135px;
     border-radius: 50%;
-    /*background-image: url("../assets/profile-pic-upload.png");*/
     object-fit: cover;
-    /*object-position: 30% 20%;*/
     border-style: solid;
-    border-width: 5px;
+    border-width: 7px;
     border-color: #fff;
     box-sizing: border-box;
-    /*padding: 125px 0 0 0;*/
+    z-index: 1;
+    position: absolute;
+    margin-left: -35rem;
+    margin-top: 18rem;
+}
+
+.cover_picture{
+    z-index: 0;
+    position: relative;
+    max-width: 100%;
 }
 
 .follow-btn{
