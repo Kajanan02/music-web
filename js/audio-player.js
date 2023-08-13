@@ -91,6 +91,31 @@ function playRandom(){
     xhr.send();
 }
 
+function playPlaylist(listener_id, playlist_name){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var obj = JSON.parse(this.responseText);
+            for(i=0; i<obj.length; i++){
+                var array = {
+                    name: obj[i][0],
+                    artist: obj[i][1],
+                    image: "./"+obj[i][2],
+                    artistArt: "./"+obj[i][3],
+                    path: "./"+obj[i][4],
+                    lyrics: "./"+obj[i][5]
+                };
+                track_list.push(array);
+            }
+            
+            loadTrack(track_index);
+            playPauseTrack();                   
+        }
+    }
+    xhr.open("GET", "./scripts/process-playlist.php?listener_id="+ listener_id + "&playlist_name=" + playlist_name);
+    xhr.send();
+}
+
 function setTrackIndex(n){
     if(track_index == n){
         playPauseTrack();
