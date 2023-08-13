@@ -121,7 +121,7 @@
         $rows2 = $pstmt2->fetchAll(PDO::FETCH_NUM);
         ?>
         <div class="row melomaniac-playlists">
-            <h2>Most Streamed Albums All Time</h2>
+            <h2>Most Streamed Songs All Time</h2>
             <div class="list">
                 <?php
                 foreach($rows2 as $row){

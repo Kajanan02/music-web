@@ -5,11 +5,13 @@ namespace classes;
 require_once "classes/db-connector.php";
 
 use classes\DBConnector;
-use Exception;
 use PDO;
-use PDOException;
 
 session_start();
+
+if(!isset($_SESSION["listener_id"])){
+    header("Location: user-login.php");
+}
 ?>
 
 <!DOCTYPE html>
