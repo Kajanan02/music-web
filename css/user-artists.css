@@ -41,20 +41,17 @@ body{
     transform: scale(1.1);
 }
 
-.cover{
-    /*width: 100%;*/
-    /*left: 10px;*/
-    /*right: 10px;*/
-    /*position: absolute;*/
-}
 .artist-header{
-    background: url("../assets/artist-art/A.R.Rahman.jpeg");
+    /*background: url("../assets/artist-art/A.R.Rahman.jpeg");*/
     display: flex;
-    height: 280px;
+    height: 400px;
     align-items: flex-end;
     justify-content: space-between;
-    background-position: center;
+    background-position: start;
     padding-bottom: 20px;
+    object-fit: cover;
+    object-position: 60% 20%;
+    background-size: cover;
 }
 
 .cover-image{
@@ -95,12 +92,14 @@ body{
     color: #fff;
     position: relative;
     font-weight: bold;
+    text-shadow: 2px 2px #453e3e;
 }
 
 .subtitle{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.869);
     padding-left: 45px;
     position: relative;
+    text-shadow: 2px 2px #453e3e;
 }
 
 .bio{

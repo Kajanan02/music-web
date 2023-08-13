@@ -140,4 +140,20 @@ class Album{
             die($e->getMessage());
         }
     }
+
+    public function sendNowPlayingAlbumInfo($album_id){
+        try{
+            $query = "SELECT song_name, artist.artist_name, album.thumbnail_url, artist.profile_pic_url, audio, lyrics FROM song, album, artist WHERE song.artist_id=artist.artist_id AND song.album_id=album.album_id AND 
+            album.album_id = ?";
+            $con = DBConnector::getConnection();
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $album_id);
+            $pstmt->execute();
+            $result = $pstmt->fetchAll();
+            return $result;
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
 }

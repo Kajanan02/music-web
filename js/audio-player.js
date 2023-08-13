@@ -19,72 +19,51 @@ const NUMBER_OF_BARS = 150; // No of bars in the visualizer
 
 let curr_track = document.createElement('audio');
 
-let track_list = [
-    {
-        name: "Castle on the Hill",
-        artist: "Ed Sheeran",
-        image: "assets/album-art/Divide.png",
-        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
-        path: "assets/audio/Castle On The Hill.mp3",
-        lyrics: "assets/lrc/Castle-On-The-Hill.lrc"
-    },
-    {
-        name: "Perfect",
-        artist: "Ed Sheeran",
-        image: "assets/album-art/Divide.png",
-        artistArt: "assets/artist-art/Ed_Sheeran.jpg",
-        path: "assets/audio/Perfect.mp3",
-        lyrics: "assets/lrc/Perfect.lrc"
-    },
-    {
-        name: "Dura",
-        artist: "Daddy Yankee",
-        image: "assets/album-art/Daddy-K-The-Mix-12.jpg",
-        artistArt: "assets/artist-art/Daddy-Yankee.jpg",
-        path: "assets/audio/Dura.mp3",
-        lyrics: "assets/lrc/Dura.lrc"
-    },
-    {
-        name: "Goodlife",
-        artist: "Kehlani ft. G-Eazy",
-        image: "assets/album-art/The_Fate_of_the_Furious_The_Album.jpg",
-        artistArt: "",
-        path: "assets/audio/Goodlife (ft. G-Eazy).mp3",
-        lyrics: ""
-    },
-    {
-        name: "Hall of Fame",
-        artist: "The Script",
-        image: "assets/album-art/3.jpg",
-        artistArt: "",
-        path: "assets/audio/Hall Of Fame.mp3",
-        lyrics: ""
-    },
-    {
-        name: "Unconditionally",
-        artist: "Katy Perry",
-        image: "assets/album-art/Prism.jpg",
-        artistArt: "",
-        path: "assets/audio/Unconditionally.mp3",
-        lyrics: ""
-    },
-    {
-        name: "Aaruyirae",
-        artist: "A.R. Rahman",
-        image: "assets/album-art/Guru.jpg",
-        artistArt: "assets/artist-art/A.R.Rahman.jpeg",
-        path: "assets/audio/Aaruyirae.mp3",
-        lyrics: ""
-    },
-    {
-        name: "Bekhayali",
-        artist: "Kabir Singh",
-        image: "assets/album-art/audio.jpeg",
-        artistArt: "",
-        path: "assets/audio/Bekhayali.mp3",
-        lyrics: ""
-    },
-  ];
+let track_list=[];
+
+function playSong(track_name, artist_name, album_art, profile_pic, audio_path, lyrics_path){
+    track_list = [];
+
+    let array = {
+        name: track_name,
+        artist: artist_name,
+        image: album_art,
+        artistArt: profile_pic,
+        path: audio_path,
+        lyrics: lyrics_path
+    };
+    track_list.push(array);
+
+    loadTrack(track_index);
+    playPauseTrack();
+}
+
+function playCollection(album_id){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var obj = JSON.parse(this.responseText);
+
+            for(i=0; i<obj.length; i++){
+                    var array = {
+                        name: obj[i][0],
+                        artist: obj[i][1],
+                        image: "./"+obj[i][2],
+                        artistArt: "./"+obj[i][3],
+                        path: "./"+obj[i][4],
+                        lyrics: "./"+obj[i][5]
+                    };
+                track_list.push(array);
+                console.log(obj[i]);
+            }
+            
+            loadTrack(track_index);
+            playPauseTrack();
+        }
+    }
+    xhr.open("GET", "./scripts/process-album.php?now_playing_album="+album_id);
+    xhr.send();
+}
 
 function setTrackIndex(n){
     if(track_index == n){
@@ -99,10 +78,10 @@ function setTrackIndex(n){
 function loadTrack(track_index){
     clearInterval(updateTimer);
     resetValues();
-   
+
     curr_track.src = track_list[track_index].path;
     curr_track.load();
-    
+
     showLyrics();
 
     track_art.style.backgroundImage = "url(" + track_list[track_index].image + ")";
@@ -112,8 +91,6 @@ function loadTrack(track_index){
     updateTimer = setInterval(seekUpdate, 500); //// Set an interval of 1000 milliseconds for updating the seek slider
     curr_track.addEventListener("ended", nextTrack);
 }
-
-loadTrack(track_index);
 
 function resetValues(){
     curr_time.textContent = "00:00";
@@ -127,6 +104,7 @@ function playPauseTrack(){
 }
 
 function playTrack(){
+    curr_track.setAttribute("autoplay","");
     curr_track.play();
     isPlaying = true;
 
@@ -135,7 +113,9 @@ function playTrack(){
 }
 
 function pauseTrack(){
+    
     curr_track.pause();
+    curr_track.removeAttribute("autoplay");
     isPlaying = false;
 
     playpause_btn.innerHTML = "<i class='fa fa-play-circle fa-5x'></i>";
