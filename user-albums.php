@@ -87,15 +87,6 @@
                 $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
                 foreach($rows3 as $row){
-                    $query2 = "SELECT song_name, artist.artist_name, artist.profile_pic_url, audio, lyrics 
-                    FROM song, artist WHERE song.artist_id=artist.artist_id AND song.artist_id = ? AND song.album_id = ?";
-                    
-                    $pstmt2 = $con->prepare($query2);
-                    $pstmt2->bindValue(1, $row[4]);
-                    $pstmt2->bindValue(2, $row[0]);
-                    $pstmt2->execute();
-                    $songs = $pstmt2->fetchAll(PDO::FETCH_NUM);
-
                     ?>
                     
                     <div class="item">
@@ -122,17 +113,7 @@
                 $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
                 foreach($rows3 as $row){
-                    $query2 = "SELECT song_name, artist.artist_name, artist.profile_pic_url, audio, lyrics 
-                    FROM song, artist WHERE song.artist_id=artist.artist_id AND song.artist_id = ? AND song.album_id = ?";
-                    
-                    $pstmt2 = $con->prepare($query2);
-                    $pstmt2->bindValue(1, $row[4]);
-                    $pstmt2->bindValue(2, $row[0]);
-                    $pstmt2->execute();
-                    $songs = $pstmt2->fetchAll(PDO::FETCH_NUM);
-
-                    ?>
-                    
+                    ?>                  
                     <div class="item">
                         <img src="<?php echo $row[3]?>" />
                         <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
@@ -157,15 +138,6 @@
                 $rows3 = $pstmt1->fetchAll(PDO::FETCH_NUM);
 
                 foreach($rows3 as $row){
-                    $query2 = "SELECT song_name, artist.artist_name, artist.profile_pic_url, audio, lyrics 
-                    FROM song, artist WHERE song.artist_id=artist.artist_id AND song.artist_id = ? AND song.album_id = ?";
-                    
-                    $pstmt2 = $con->prepare($query2);
-                    $pstmt2->bindValue(1, $row[4]);
-                    $pstmt2->bindValue(2, $row[0]);
-                    $pstmt2->execute();
-                    $songs = $pstmt2->fetchAll(PDO::FETCH_NUM);
-
                     ?>
                     
                     <div class="item">

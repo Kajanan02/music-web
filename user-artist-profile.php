@@ -164,17 +164,7 @@
                 <div class="list">
                     <?php
                     foreach($rows3 as $row){
-                        $query4 = "SELECT song_name, artist.artist_name, artist.profile_pic_url, audio, lyrics 
-                            FROM song, artist WHERE song.artist_id=artist.artist_id AND song.artist_id = ? AND song.album_id = ?";
-                        
-                        $pstmt4 = $con->prepare($query4);
-                        $pstmt4->bindValue(1, $artist_id);
-                        $pstmt4->bindValue(2, $row[0]);
-                        $pstmt4->execute();
-                        $songs = $pstmt4->fetchAll(PDO::FETCH_NUM);
-
-                        ?>
-                        
+                        ?>      
                         <div class="item">
                             <img src="<?php echo $row[3]?>" />
                             <div class="play" onclick="playAlbum(<?php echo $row[0]?>)">
