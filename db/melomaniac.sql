@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2023 at 08:28 AM
+-- Generation Time: Aug 13, 2023 at 01:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -128,11 +128,8 @@ CREATE TABLE `listener` (
 INSERT INTO `listener` (`listener_id`, `first_name`, `last_name`, `email`, `profile_pic`, `subscription_status`, `plan_id`, `username`, `password`, `card_number`, `expiry_date`) VALUES
 (1, 'Robert', 'Pattinson', 'robertp@gmail.com', NULL, 1, 'U2', 'robert89', '$2y$10$vlWYnQGoZCCkzWbPwFY3eeAMmSBjRtnCyYIxNIsiyizTEcUDsjTWe', '4567-234-12-11', '2025-07-01'),
 (2, 'Hannah', 'Stine', 'hannahstine@gmail.com', NULL, 0, NULL, 'hannah02', '$2y$10$vlWYnQGoZCCkzWbPwFY3eeAMmSBjRtnCyYIxNIsiyizTEcUDsjTWe', NULL, NULL),
-(3, 'Test', 'User', 'test@melomanic.com', NULL, 0, NULL, 'testuser', '$2y$10$4qoGy3SOQJFdMV.NVXqhJ.9YoSFBDI91lZkiPqVG3N3ep42EPwkTq', NULL, NULL),
-(4, 'Admin', 'User', 'admin@melomaniac.com', NULL, 0, NULL, 'admin', '$2y$10$AaA4MWd15VEIcTZBITpdR.W9Y0B/l5QZmhig74sdcKg/fYPa8/aie', NULL, NULL),
 (5, 'Mark', 'Jacob', 'mjacob@gmail.com', NULL, 0, NULL, 'markJ', '$2y$10$GKmjjAtiPLsndT/el7/CXeAnVlm2bqWu0.75POhBMHtOMTByd8NN6', NULL, NULL),
-(6, 'Mark', 'Peterson', 'peterson@gmail.com', NULL, 0, NULL, '#peter', '$2y$10$Wvi/z4qFa6.D1azaJwqx6OidyvmcaZDGl1ogMj.AhcpoL8/cZKZlG', NULL, NULL),
-(7, 'Robert', 'Gorden', 'robertgorden@foodnetwork.com', NULL, 0, NULL, 'r_gorden', '$2y$10$XE9d6fGC/I/cGD//s49.r.BSAk3gNYSozvCOQJgPIeObORc/l19Fu', NULL, NULL);
+(6, 'Mark', 'Peterson', 'peterson@gmail.com', NULL, 0, NULL, '#peter', '$2y$10$Wvi/z4qFa6.D1azaJwqx6OidyvmcaZDGl1ogMj.AhcpoL8/cZKZlG', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,7 +184,7 @@ INSERT INTO `payment` (`payment_id`, `txn_id`, `plan_id`, `artist_id`, `currency
 --
 
 CREATE TABLE `playlist` (
-  `playlist_id` int(11) NOT NULL,
+  `row` int(11) NOT NULL,
   `listener_id` int(11) NOT NULL,
   `song_id` int(11) NOT NULL,
   `playlist_name` varchar(128) NOT NULL
@@ -197,8 +194,13 @@ CREATE TABLE `playlist` (
 -- Dumping data for table `playlist`
 --
 
-INSERT INTO `playlist` (`playlist_id`, `listener_id`, `song_id`, `playlist_name`) VALUES
-(1, 1, 1, 'Favourites');
+INSERT INTO `playlist` (`row`, `listener_id`, `song_id`, `playlist_name`) VALUES
+(1, 1, 1, 'Favourites'),
+(2, 1, 24, 'Favourites'),
+(3, 1, 20, 'Favourites'),
+(4, 1, 5, 'Love'),
+(5, 1, 18, 'Love'),
+(6, 1, 2, 'Favourites');
 
 -- --------------------------------------------------------
 
@@ -317,7 +319,7 @@ ALTER TABLE `payment`
 -- Indexes for table `playlist`
 --
 ALTER TABLE `playlist`
-  ADD PRIMARY KEY (`playlist_id`),
+  ADD PRIMARY KEY (`row`),
   ADD KEY `song_id` (`song_id`),
   ADD KEY `listener_id` (`listener_id`);
 
@@ -367,7 +369,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `row` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `song`

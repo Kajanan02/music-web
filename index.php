@@ -84,7 +84,7 @@
                     <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
-                    <h4>Goodtimes</h4>
+                    <h4>Good Times</h4>
                     <p>Don't search for music, Search for memories</p>
                 </div>
 
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="item">
-                    <img src="assets/playlists/temp.jpeg" />
+                    <img src="assets/playlists/love.jpeg" />
                     <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="item">
-                    <img src="assets/playlists/old.jpeg" />
+                    <img src="assets/playlists/mood.jpeg" />
                     <div class="play" onclick="playRandom()">
                         <span class="fa fa-play"></span>
                     </div>
