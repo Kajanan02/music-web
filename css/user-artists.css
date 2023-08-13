@@ -42,7 +42,6 @@ body{
 }
 
 .artist-header{
-    /*background: url("../assets/artist-art/A.R.Rahman.jpeg");*/
     display: flex;
     height: 400px;
     align-items: flex-end;
