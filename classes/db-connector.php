@@ -8,8 +8,8 @@ use PDOException;
 class DBConnector{
     private static $hostname = "localhost";
     private static $dbname = "melomaniac";
-    private static $username = "testuser";
-    private static $password = "testuser";
+    private static $username = "root";
+    private static $password = "";
 
     public static function getConnection(){
         try{
